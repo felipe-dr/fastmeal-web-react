@@ -1,0 +1,28 @@
+// -----------------------------------------------------------------------------
+// Title: Base
+//
+// Finality:
+// Sets default styles for html elements
+// -----------------------------------------------------------------------------
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: $font-size-base;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+img {
+  // Remove extra empty space
+  display: block;
+  max-width: 100%;
+  border: 0;
+}

@@ -1,0 +1,101 @@
+// -----------------------------------------------------------------------------
+// Title: Mixins
+//
+// Finality:
+// Helper mixins for code reuse
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Create media breakpoint with 'em' unit
+// -----------------------------------------------------------------------------
+@mixin media-breakpoint($breakpoint) {
+  $breakpoint-px: map-get($breakpoints, $breakpoint);
+  $breakpoint-em: px-to-em($breakpoint-px);
+
+  @if $breakpoint-px == 0 {
+    @content;
+  } @else {
+    @media (min-width: $breakpoint-em) {
+      @content;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Create spacing utility classes
+// -----------------------------------------------------------------------------
+@mixin generate-spacing(
+  $map-positions,
+  $map-amounts,
+  $attribute,
+  $break-name,
+  $prefix: '-',
+  $separator: '',
+  $abbreviate: true
+) {
+  $separator-or-break: if($break-name == 'xs', #{$prefix}, -#{$break-name}#{$prefix});
+  $separator-or-null: '';
+
+  @each $side-name, $side-value in $map-positions {
+    @each $space-name, $space-amount in $map-amounts {
+      @if ($side-name == '' and $separator != '') {
+        $separator-or-null: '';
+      } @else {
+        $separator-or-null: $separator;
+      }
+
+      $side-name: if($abbreviate, str-slice($side-name, 0, 1), $side-name);
+      $selector: #{$separator-or-null}#{$side-name}#{$separator-or-break}#{$space-name};
+      $side: if($side-name == '', '', -#{$side-value});
+      $property: if($side-name == 'x' or $side-name == 'y', $attribute, #{$attribute}#{$side});
+      $space-value: if(type-of($space-amount) != string, px-to-rem($space-amount), $space-amount);
+
+      &#{$selector} {
+        @if $side-name == 'x' {
+          #{$property}-right: #{$space-value} !important;
+          #{$property}-left: #{$space-value} !important;
+        } @else if $side-name == 'y' {
+          #{$property}-top: #{$space-value} !important;
+          #{$property}-bottom: #{$space-value} !important;
+        } @else {
+          #{$property}: #{$space-value} !important;
+        }
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Create utility property classes
+// -----------------------------------------------------------------------------
+@mixin generate-properties(
+  $map-properties,
+  $attribute,
+  $break-name: '',
+  $prefix: '-',
+  $separator: '-',
+  $base: 'base',
+  $isInnerMap: false
+) {
+  $separator-or-break: '';
+
+  @if ($break-name != 'xs' and $break-name != '' and $isInnerMap == false ) {
+    $separator-or-break: -#{$break-name};
+  }
+
+  @each $key, $value in $map-properties {
+    &#{if($key != $base, #{$separator-or-break}#{$prefix}#{$key}, '')} {
+      @if type-of($value) == 'map' {
+        @include generate-properties(
+          $value,
+          $attribute,
+          $break-name,
+          $separator,
+          $isInnerMap: true
+        );
+      } @else {
+        #{$attribute}: $value !important;
+      }
+    }
+  }
+}

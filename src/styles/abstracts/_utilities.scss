@@ -1,0 +1,127 @@
+// -----------------------------------------------------------------------------
+// Title: Utilities
+//
+// Finality:
+// Placeholders and helper classes
+// -----------------------------------------------------------------------------
+$utility-prefix: 'u';
+
+@each $break-name, $break-values in $breakpoints {
+  @include media-breakpoint($break-name) {
+    .#{$utility-prefix}-bg {
+      @include generate-properties($colors, 'background-color', $break-name);
+    }
+
+    .#{$utility-prefix}-font {
+      @include generate-properties($font-weights, 'font-weight', $break-name);
+      @include generate-properties($font-styles, 'font-style', $break-name);
+    }
+
+    .#{$utility-prefix}-text {
+      @include generate-properties($colors, 'color', $break-name);
+      @include generate-properties($text-aligns, 'text-align', $break-name);
+      @include generate-properties($text-wraps, 'white-space', $break-name);
+      @include generate-properties($text-breaks, 'word-wrap', $break-name);
+      @include generate-properties($text-breaks, 'word-break', $break-name);
+      @include generate-properties($text-transforms, 'text-transform', $break-name);
+      @include generate-properties($text-decorations, 'text-decoration', $break-name);
+    }
+
+    .#{$utility-prefix}-m {
+      @include generate-spacing($side-positions, $space-amounts, 'margin', $break-name);
+    }
+
+    .#{$utility-prefix}-p {
+      @include generate-spacing($side-positions, $space-amounts, 'padding', $break-name);
+    }
+
+    .#{$utility-prefix}-display {
+      @include generate-properties($displays, 'display', $break-name);
+    }
+
+    .#{$utility-prefix}-float {
+      @include generate-properties($floats, 'float', $break-name);
+    }
+
+    .#{$utility-prefix}-flex {
+      @include generate-properties($flex-direction, 'flex-direction', $break-name);
+      @include generate-properties($flex-grow, 'flex-grow', $break-name);
+      @include generate-properties($flex-shrink, 'flex-shrink', $break-name);
+      @include generate-properties($flex-wrap, 'flex-wrap', $break-name);
+      @include generate-properties($flex-justify-content, 'justify-content', $break-name);
+      @include generate-properties($flex-align-items, 'align-items', $break-name);
+      @include generate-properties($flex-align-content, 'align-content', $break-name);
+      @include generate-properties($flex-align-self, 'align-self', $break-name);
+      @include generate-properties($order, 'order', $break-name);
+    }
+
+    .#{$utility-prefix}-position {
+      @include generate-properties($positions, 'position', $break-name);
+    }
+
+    .#{$utility-prefix}-top {
+      @include generate-properties($top, 'top', $break-name);
+    }
+
+    .#{$utility-prefix}-right {
+      @include generate-properties($right, 'right', $break-name);
+    }
+
+    .#{$utility-prefix}-bottom {
+      @include generate-properties($bottom, 'bottom', $break-name);
+    }
+
+    .#{$utility-prefix}-left {
+      @include generate-properties($left, 'left', $break-name);
+    }
+
+    .#{$utility-prefix}-translate-middle {
+      @include generate-properties($translate-middle, 'transform', $break-name);
+    }
+
+    .#{$utility-prefix}-border {
+      @include generate-properties($colors, 'border-color', $break-name);
+      @include generate-properties($border-widths, 'border-width', $break-name);
+      @include generate-spacing(
+        $side-positions,
+        $border-amounts,
+        'border',
+        $break-name,
+        $separator: '-',
+        $abbreviate: false
+      );
+    }
+
+    .#{$utility-prefix}-shadow {
+      @include generate-properties($shadows, 'box-shadow', $break-name);
+    }
+
+    .#{$utility-prefix}-width {
+      @include generate-properties($sizes, 'width', $break-name);
+    }
+
+    .#{$utility-prefix}-max-width {
+      @include generate-properties($max-size, 'max-width', $break-name);
+    }
+
+    .#{$utility-prefix}-height {
+      @include generate-properties($sizes, 'height', $break-name);
+    }
+
+    .#{$utility-prefix}-max-height {
+      @include generate-properties($max-size, 'max-height', $break-name);
+    }
+
+    .#{$utility-prefix}-align {
+      @include generate-properties($vertical-aligns, 'vertical-align', $break-name);
+    }
+
+    .#{$utility-prefix}-overflow {
+      @include generate-properties($overflows, 'overflow', $break-name);
+    }
+
+    .#{$utility-prefix} {
+      @include generate-properties($visibility, 'visibility', $break-name);
+    }
+  }
+}
