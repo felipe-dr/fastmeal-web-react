@@ -1,0 +1,378 @@
+// -----------------------------------------------------------------------------
+// Title: Variables
+//
+// Finality:
+// Definition of variables
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Colors
+// -----------------------------------------------------------------------------
+$color-primary: #f6af24;
+$color-secondary: #f8f9fa;
+$color-base-1: #cecfd0;
+$color-base-2: #fff;
+$color-base-3: #1a1a1a;
+
+$colors: (
+  'primary': $color-primary,
+  'secondary': $color-secondary,
+  'base-1': $color-base-1,
+  'base-2': $color-base-2,
+  'base-3': $color-base-3,
+);
+
+// -----------------------------------------------------------------------------
+// Fonts
+// 1. $font-size-base......Sets the root font size
+//                         ex 1: 10px/16px ==> 0.625 * 100% ==> 1rem = 10px
+//
+// 2. $font-size-default...Sets the default font size
+// -----------------------------------------------------------------------------
+
+// 1
+$font-size-base: 100%;
+
+// 2
+$font-size-default: 16px;
+
+$font-family-sans-serif: 'Open Sans', sans-serif;
+$font-family-cursive: 'Norican', cursive;
+
+$font-weight-lighter: lighter;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-bolder: bolder;
+
+$font-weights: (
+  'lighter': $font-weight-lighter,
+  'light': $font-weight-light,
+  'normal': $font-weight-normal,
+  'semibold': $font-weight-semibold,
+  'bold': $font-weight-bold,
+  'bolder': $font-weight-bolder,
+);
+
+$font-styles: (
+  'italic': italic,
+  'normal': normal,
+);
+
+// -----------------------------------------------------------------------------
+// Text
+// -----------------------------------------------------------------------------
+$text-aligns: (
+  'left': left,
+  'center': center,
+  'right': right,
+  'justify': justify,
+);
+
+$text-wraps: (
+  'wrap': normal,
+  'nowrap': nowrap,
+);
+
+$text-breaks: (
+  'break': break-word,
+);
+
+$text-transforms: (
+  'lowercase': lowercase,
+  'uppercase': uppercase,
+  'capitalize': capitalize,
+);
+
+$text-decorations: (
+  'none': none,
+  'underline': underline,
+  'line-through': line-through,
+);
+
+// -----------------------------------------------------------------------------
+// Breakpoints
+// -----------------------------------------------------------------------------
+$breakpoints: (
+  'xs': 0,
+  // 'sm': 576px,
+  // 'md': 768px,
+  // 'lg': 992px,
+  // 'xl': 1200px,
+  // 'xxl': 1400px,
+);
+
+// -----------------------------------------------------------------------------
+// Side positions
+// -----------------------------------------------------------------------------
+$side-positions: (
+  '': '',
+  'top': top,
+  'right': right,
+  'bottom': bottom,
+  'left': left,
+  'x': null,
+  'y': null,
+);
+
+// -----------------------------------------------------------------------------
+// Space amounts
+// -----------------------------------------------------------------------------
+$space-amounts: (
+  '0': 0,
+  'auto': auto,
+);
+
+// -----------------------------------------------------------------------------
+// Displays
+// -----------------------------------------------------------------------------
+$displays: (
+  'none': none,
+  'inline': inline,
+  'inline-block': inline-block,
+  'inline-flex': inline-flex,
+  'block': block,
+  'flex': flex,
+  'grid': grid,
+  'table': table,
+  'table-cell': table-cell,
+  'table-row': table-row,
+);
+
+// -----------------------------------------------------------------------------
+// Floats
+// -----------------------------------------------------------------------------
+$floats: (
+  'left': left,
+  'right': right,
+  'none': none,
+);
+
+// -----------------------------------------------------------------------------
+// Flex
+// -----------------------------------------------------------------------------
+$flex-direction: (
+  'row': row,
+  'row-reverse': row-reverse,
+  'column': column,
+  'column-reverse': column-reverse,
+);
+
+$flex-grow: (
+  'grow-0': 0,
+  'grow-1': 1,
+);
+
+$flex-shrink: (
+  'shrink-0': 0,
+  'shrink-1': 1,
+);
+
+$flex-wrap: (
+  'nowrap': nowrap,
+  'wrap': wrap,
+  'wrap-reverse': wrap-reverse,
+);
+
+$flex-justify-content: (
+  'justify-content': (
+    'start': flex-start,
+    'end': flex-end,
+    'center': center,
+    'between': space-between,
+    'around': space-around,
+    'evenly': space-evenly,
+  )
+);
+
+$flex-align-items: (
+  'align-items': (
+    'start': flex-start,
+    'end': flex-end,
+    'center': center,
+    'baseline': baseline,
+    'stretch': stretch,
+  )
+);
+
+$flex-align-content: (
+  'align-content': (
+    'start': flex-start,
+    'end': flex-end,
+    'center': center,
+    'between': space-between,
+    'around': space-around,
+    'stretch': stretch,
+  )
+);
+
+$flex-align-self: (
+  'align-self': (
+    'auto': auto,
+    'start': flex-start,
+    'end': flex-end,
+    'center': center,
+    'baseline': baseline,
+    'stretch': stretch,
+  )
+);
+
+$order: (
+  'first': -1,
+  '0': 0,
+  '1': 1,
+  '2': 2,
+  '3': 3,
+  '4': 4,
+  '5': 5,
+  'last': 6,
+);
+
+// -----------------------------------------------------------------------------
+// Positions
+// -----------------------------------------------------------------------------
+$positions: (
+  'static': static,
+  'relative': relative,
+  'absolute': absolute,
+  'fixed': fixed,
+  'sticky': sticky,
+);
+
+// -----------------------------------------------------------------------------
+// Top
+// -----------------------------------------------------------------------------
+$top: (
+  '0': 0,
+  '50': 50%,
+  '100': 100%,
+);
+
+// -----------------------------------------------------------------------------
+// Right
+// -----------------------------------------------------------------------------
+$right: (
+  '0': 0,
+  '50': 50%,
+  '100': 100%,
+);
+
+// -----------------------------------------------------------------------------
+// Bottom
+// -----------------------------------------------------------------------------
+$bottom: (
+  '0': 0,
+  '50': 50%,
+  '100': 100%,
+);
+
+// -----------------------------------------------------------------------------
+// Left
+// -----------------------------------------------------------------------------
+$left: (
+  '0': 0,
+  '50': 50%,
+  '100': 100%,
+);
+
+// -----------------------------------------------------------------------------
+// Translate
+// -----------------------------------------------------------------------------
+$translate-middle: (
+  'xy': translate(-50%, -50%),
+  'x': translateX(-50%),
+  'y': translateY(-50%),
+);
+
+// -----------------------------------------------------------------------------
+// Borders
+// -----------------------------------------------------------------------------
+$border-widths: (
+  'width': (
+    '1': (1px / $font-size-default) + rem,
+    '2': (2px / $font-size-default) + rem,
+    '3': (3px / $font-size-default) + rem,
+    '4': (4px / $font-size-default) + rem,
+    '5': (5px / $font-size-default) + rem,
+  ),
+);
+
+$border-style: solid;
+
+$border-color: rgba(#000, 0.15);
+
+$border-amounts: (
+  '1': '#{(1px / $font-size-default) + rem} #{$border-style} #{$border-color}',
+  '2': '#{(2px / $font-size-default) + rem} #{$border-style} #{$border-color}',
+  '3': '#{(3px / $font-size-default) + rem} #{$border-style} #{$border-color}',
+  '4': '#{(4px / $font-size-default) + rem} #{$border-style} #{$border-color}',
+  '5': '#{(5px / $font-size-default) + rem} #{$border-style} #{$border-color}',
+);
+
+// -----------------------------------------------------------------------------
+// Shadows
+// -----------------------------------------------------------------------------
+$shadow-normal: 0 #{(8px / $font-size-default) + rem} #{(16px / $font-size-default) + rem} rgba(#000, 0.15);
+$shadow-small: 0 #{(2px / $font-size-default) + rem} #{(4px / $font-size-default) + rem} rgba(#000, 0.075);
+$shadow-large: 0 #{(16px / $font-size-default) + rem} #{(48px / $font-size-default) + rem} rgba(#000, 0.175);
+$shadow-inset: inset 0 #{(1px / $font-size-default) + rem} #{(2px / $font-size-default) + rem} rgba(#000, 0.075);
+
+$shadows: (
+  'normal': $shadow-normal,
+  'small': $shadow-small,
+  'large': $shadow-large,
+  'inset': $shadow-inset,
+  'none': none,
+);
+
+// -----------------------------------------------------------------------------
+// Sizes
+// -----------------------------------------------------------------------------
+$sizes: (
+  '25': 25%,
+  '50': 50%,
+  '75': 75%,
+  '100': 100%,
+  'auto': auto,
+);
+
+$max-size: (
+  '100': 100%,
+);
+
+// -----------------------------------------------------------------------------
+// Vertical aligns
+// -----------------------------------------------------------------------------
+$vertical-aligns: (
+  'baseline': baseline,
+  'top': top,
+  'middle': middle,
+  'bottom': bottom,
+  'text-bottom': text-bottom,
+  'text-top': text-top,
+);
+
+// -----------------------------------------------------------------------------
+// Overflows
+// -----------------------------------------------------------------------------
+$overflows: (
+  'auto': auto,
+  'hidden': hidden,
+  'visible': visible,
+  'scroll': scroll,
+);
+
+// -----------------------------------------------------------------------------
+// Visibility
+// -----------------------------------------------------------------------------
+$visibility: (
+  'visible': visible,
+  'invisible': hidden,
+);
+
+// -----------------------------------------------------------------------------
+// Z-indexes
+// The higher the top the bigger the zindex
+// -----------------------------------------------------------------------------
+$z-indexes: ();
