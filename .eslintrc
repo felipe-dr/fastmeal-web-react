@@ -40,7 +40,14 @@
         "newlinesBetween": "always",
         "groups": [
           "module",
-          "/^@/",
+          "/assets/",
+          "/styles/",
+          "/core/",
+          "/shared/",
+          "/features/",
+          "/layouts/",
+          "/routes/",
+          "/environments/",
           [
             "parent",
             "sibling",
