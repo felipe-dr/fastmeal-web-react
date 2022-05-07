@@ -1,0 +1,21 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/functions';
+
+// -----------------------------------------------------------------------------
+// l-header
+// -----------------------------------------------------------------------------
+.l-header {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+
+  // ---------------------------------------------------------------------------
+  // l-header__container
+  // ---------------------------------------------------------------------------
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: px-to-rem(84px);
+  }
+}
