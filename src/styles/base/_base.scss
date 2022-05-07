@@ -12,12 +12,41 @@
   padding: 0;
 }
 
+* {
+  // Exclusive to firefox
+  scrollbar-width: thin;
+  scrollbar-color: $color-primary hexa-to-rgba($color-base-3, 0.8);
+
+  // Exclusive to chrome, edge and safari
+  &::-webkit-scrollbar {
+    width: px-to-rem(8px);
+    height: px-to-rem(8px);
+    background-color: hexa-to-rgba($color-base-3, 0.8);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: px-to-rem(1px) solid;
+    border-radius: px-to-rem(5px);
+    background-color: $color-primary;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: px-to-rem(5px);
+  }
+}
+
+::selection {
+  background-color: $color-primary;
+  color: #fff;
+}
+
 html {
   font-size: $font-size-base;
 }
 
 body {
   box-sizing: border-box;
+  background-color: $color-secondary;
 }
 
 img {
@@ -25,4 +54,15 @@ img {
   display: block;
   max-width: 100%;
   border: 0;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a:link,
+a:visited {
+  display: block;
+  text-decoration: none;
 }
