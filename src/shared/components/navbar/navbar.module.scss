@@ -1,0 +1,60 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/functions';
+@import 'styles/abstracts/mixins';
+
+// -----------------------------------------------------------------------------
+// c-navbar
+// -----------------------------------------------------------------------------
+.c-navbar {
+  display: flex;
+  justify-content: space-between;
+  word-break: initial;
+
+  // ---------------------------------------------------------------------------
+  // c-navbar__mobile
+  // ---------------------------------------------------------------------------
+  &__mobile {
+    position: fixed;
+    top: px-to-rem(84px);
+    left: 0;
+    flex-direction: column;
+    gap: px-to-rem(45px);
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 0;
+    height: calc(100vh - px-to-rem(84px));
+    border-top: px-to-rem(1px) solid hexa-to-rgba($color-base-1, 0.25);
+    background-color: #fff;
+    transition: max-width $duration-0-6s ease;
+
+    // c-navbar__mobile--active
+    &--active {
+      max-width: 100%;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-navbar__desktop
+  // ---------------------------------------------------------------------------
+  &__desktop {
+    flex: 1;
+    align-items: center;
+    margin-left: px-to-rem(100px);
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-navbar__list
+  // ---------------------------------------------------------------------------
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: px-to-rem(14px);
+    padding: 0 calc(px-to-rem($grid-gap / 2)) px-to-rem(30px);
+
+    @include media-breakpoint('md') {
+      flex-direction: row;
+      gap: px-to-rem(8px);
+      padding: 0;
+    }
+  }
+}
