@@ -1,0 +1,32 @@
+// -----------------------------------------------------------------------------
+// Title: Grid
+//
+// Finality:
+// Defines general structure of the grid
+// -----------------------------------------------------------------------------
+.grid {
+  // grid-main
+  &-main {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+  }
+
+  // grid-container
+  &-container {
+    max-width: px-to-rem(map-get($breakpoints, 'xl'));
+    margin: 0 auto;
+    padding-right: calc(px-to-rem($grid-gap / 2));
+    padding-left: calc(px-to-rem($grid-gap / 2));
+
+    // grid-container--fluid
+    &--fluid {
+      max-width: 100%;
+      margin: 0;
+      margin-right: auto;
+      margin-left: auto;
+      padding-right: calc(px-to-rem($grid-gap / 2));
+      padding-left: calc(px-to-rem($grid-gap / 2));
+    }
+  }
+}

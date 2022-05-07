@@ -96,12 +96,16 @@ $text-decorations: (
 // -----------------------------------------------------------------------------
 $breakpoints: (
   'xs': 0,
-  // 'sm': 576px,
-  // 'md': 768px,
-  // 'lg': 992px,
-  // 'xl': 1200px,
-  // 'xxl': 1400px,
+  'sm': 600px,
+  'md': 900px,
+  'lg': 1200px,
+  'xl': 1450px,
 );
+
+// -----------------------------------------------------------------------------
+// Grid
+// -----------------------------------------------------------------------------
+$grid-gap: 30px;
 
 // -----------------------------------------------------------------------------
 // Side positions
@@ -121,6 +125,8 @@ $side-positions: (
 // -----------------------------------------------------------------------------
 $space-amounts: (
   '0': 0,
+  '5': 5,
+  '45': 45,
   'auto': auto,
 );
 
@@ -313,10 +319,10 @@ $border-amounts: (
 // -----------------------------------------------------------------------------
 // Shadows
 // -----------------------------------------------------------------------------
+$shadow-small: 0 #{(3px / $font-size-default) + rem} #{(6px / $font-size-default) + rem} rgba(#000, 0.15);
 $shadow-normal: 0 #{(8px / $font-size-default) + rem} #{(16px / $font-size-default) + rem} rgba(#000, 0.15);
-$shadow-small: 0 #{(2px / $font-size-default) + rem} #{(4px / $font-size-default) + rem} rgba(#000, 0.075);
 $shadow-large: 0 #{(16px / $font-size-default) + rem} #{(48px / $font-size-default) + rem} rgba(#000, 0.175);
-$shadow-inset: inset 0 #{(1px / $font-size-default) + rem} #{(2px / $font-size-default) + rem} rgba(#000, 0.075);
+$shadow-inset: inset 0 #{(1px / $font-size-default) + rem} #{(2px / $font-size-default) + rem} rgba(#000, 0.15);
 
 $shadows: (
   'normal': $shadow-normal,
@@ -376,3 +382,11 @@ $visibility: (
 // The higher the top the bigger the zindex
 // -----------------------------------------------------------------------------
 $z-indexes: ();
+
+// -----------------------------------------------------------------------------
+// Transitions
+// -----------------------------------------------------------------------------
+$duration-0-1s: 0.1s;
+$duration-0-2s: 0.2s;
+$duration-0-3s: 0.3s;
+$duration-0-6s: 0.6s;

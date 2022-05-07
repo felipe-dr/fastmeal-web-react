@@ -1,0 +1,36 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/functions';
+@import 'styles/abstracts/mixins';
+
+// -----------------------------------------------------------------------------
+// c-rounded-link
+// -----------------------------------------------------------------------------
+.c-rounded-link {
+  align-items: center;
+  color: $color-base-3;
+  transition: $duration-0-2s;
+
+  // c-rounded-link:hover|focus
+  &:hover,
+  &:focus {
+    color: $color-primary;
+  }
+
+  @include media-breakpoint('md') {
+    justify-content: center;
+    max-width: px-to-rem(50px);
+    max-height: px-to-rem(50px);
+    padding: px-to-rem(14px);
+    border: px-to-rem(1px) solid $color-base-1;
+    border-radius: 100%;
+
+    // c-rounded-link:hover|focus
+    &:hover,
+    &:focus {
+      border-color: $color-primary;
+      background-color: $color-primary;
+      color: #fff;
+      outline: none;
+    }
+  }
+}

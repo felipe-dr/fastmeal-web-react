@@ -8,6 +8,21 @@
     "stylelint-order"
   ],
   "rules": {
+    "function-no-unknown": [
+      true,
+      {
+        "ignoreFunctions": [
+          "map-get",
+          "remove-unit",
+          "px-to-relative",
+          "px-to-rem",
+          "px-to-em",
+          "hexa-to-rgba",
+          "zindex"
+        ]
+      }
+    ],
+    "max-nesting-depth": 3,
     "at-rule-no-unknown": null,
     "plugin/declaration-block-no-ignored-properties": true,
     "order/order": [
