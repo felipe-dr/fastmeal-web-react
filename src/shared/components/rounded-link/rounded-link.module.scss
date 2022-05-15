@@ -10,7 +10,7 @@
   color: $color-base-3;
   transition: $duration-0-2s;
 
-  // c-rounded-link:hover|focus
+  // c-rounded-link:hover, c-rounded-link:focus
   &:hover,
   &:focus {
     color: $color-primary;
@@ -24,7 +24,7 @@
     border: px-to-rem(1px) solid $color-base-1;
     border-radius: 100%;
 
-    // c-rounded-link:hover|focus
+    // c-rounded-link:hover, c-rounded-link:focus
     &:hover,
     &:focus {
       border-color: $color-primary;
