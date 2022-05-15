@@ -14,6 +14,9 @@ $utility-prefix: 'u';
 
     .#{$utility-prefix}-font {
       @include generate-properties($font-weights, 'font-weight', $break-name);
+    }
+
+    .#{$utility-prefix}-font-style {
       @include generate-properties($font-styles, 'font-style', $break-name);
     }
 
