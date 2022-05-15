@@ -14,7 +14,7 @@ export default function MainWebsite(): JSX.Element {
           <Header />
         </NavbarProvider>
       </BreakpointProvider>
-      <main className="grid-container u-py-45">
+      <main className="grid-container u-position-relative u-py-45">
         <Outlet />
       </main>
       <Footer />

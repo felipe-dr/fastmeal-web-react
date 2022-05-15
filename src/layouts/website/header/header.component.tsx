@@ -19,7 +19,7 @@ export default function Header(): JSX.Element {
           [styles['l-header__container']]: true,
         })}
       >
-        <Logo />
+        <Logo linkStyleClasses={styles['l-header__logo']} />
         <Navbar />
       </div>
     </header>

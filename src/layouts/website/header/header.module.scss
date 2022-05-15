@@ -7,6 +7,8 @@
 .l-header {
   position: sticky;
   top: 0;
+  z-index: zindex('l-header');
+  border-bottom: px-to-rem(1px) solid $color-primary;
   background-color: #fff;
 
   // ---------------------------------------------------------------------------
@@ -17,5 +19,12 @@
     align-items: center;
     justify-content: space-between;
     min-height: px-to-rem(84px);
+  }
+
+  // ---------------------------------------------------------------------------
+  // l-header__logo
+  // ---------------------------------------------------------------------------
+  &__logo {
+    margin-top: px-to-rem(-12px);
   }
 }

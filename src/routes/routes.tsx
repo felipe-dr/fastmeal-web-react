@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
 
+import Home from 'features/home/pages/home.component';
+
 import MainWebsite from 'layouts/website/main-website/main-website.component';
 
 function Routes() {
@@ -7,7 +9,12 @@ function Routes() {
     {
       path: '/',
       element: <MainWebsite />,
-      children: [{}],
+      children: [
+        {
+          path: '/',
+          element: <Home />,
+        },
+      ],
     },
   ]);
 

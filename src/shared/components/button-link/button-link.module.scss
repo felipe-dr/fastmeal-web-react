@@ -1,0 +1,58 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/functions';
+@import 'styles/abstracts/mixins';
+
+// -----------------------------------------------------------------------------
+// c-button-link
+// -----------------------------------------------------------------------------
+.c-button-link {
+
+  // c-button-link, c-button-link:link, c-button-link:visited
+  &,
+  &:link,
+  &:visited {
+    display: inline-block;
+    border: 0;
+    font-size: inherit;
+    font-family: inherit;
+    line-height: inherit;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+
+    @include media-breakpoint('sm') {
+      font-size: px-to-rem(18px);
+    }
+  }
+
+  // c-button-link:active, c-button-link:focus
+  &:active,
+  &:focus {
+    outline: none;
+  }
+
+  // c-button-link--default
+  &--default {
+    padding: px-to-rem(10px) px-to-rem(30px);
+    border-radius: px-to-rem(25px);
+    transition: $duration-0-3s;
+  }
+
+  // c-button-link--color
+  &--color {
+    // c-button-link--color-base-3
+    &-base-3 {
+      background-color: $color-base-3;
+      color: #fff;
+
+      // c-button-link--color-base-3:hover
+      &:hover {
+        // c-button-link--color-base-3:hover:not([disabled])
+        &:not([disabled]) {
+          background-color: $color-primary;
+          transform: translate3d(0, px-to-rem(-4px), 0);
+        }
+      }
+    }
+  }
+}
