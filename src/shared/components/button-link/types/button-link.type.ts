@@ -2,11 +2,15 @@ import { ReactNode } from 'react';
 import { LinkProps } from 'react-router-dom';
 
 import { ClassNameProps } from 'shared/interfaces/class-name.interface';
-import { ButtonAppearance } from 'shared/types/button-appearance.type';
+import {
+  ButtonLinkAppearance,
+  ButtonLinkVisualType,
+} from 'shared/types/button-link.type';
 import { Colors } from 'shared/types/colors.type';
 
 type ButtonLinkBaseProps = ClassNameProps & {
-  appearance?: ButtonAppearance;
+  visualType: ButtonLinkVisualType;
+  appearance?: ButtonLinkAppearance;
   color?: Colors;
   children: ReactNode;
 };

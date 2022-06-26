@@ -2,56 +2,92 @@
 @import 'styles/abstracts/functions';
 @import 'styles/abstracts/mixins';
 
-// -----------------------------------------------------------------------------
-// c-button-link
-// -----------------------------------------------------------------------------
-.c-button-link {
-
-  // c-button-link, c-button-link:link, c-button-link:visited
+.c-button,
+.c-link {
+  // c-button, c-button:link, c-button:visited, c-link, c-link:link, c-link:visited
   &,
   &:link,
   &:visited {
     display: inline-block;
-    border: 0;
     font-size: inherit;
     font-family: inherit;
     line-height: inherit;
     text-align: center;
     text-decoration: none;
     cursor: pointer;
-
-    @include media-breakpoint('sm') {
-      font-size: px-to-rem(18px);
-    }
   }
 
-  // c-button-link:active, c-button-link:focus
+  // c-button:active, c-button:focus, c-link:active, c-link:focus
   &:active,
   &:focus {
     outline: none;
   }
 
-  // c-button-link--default
+  // c-button:disabled, c-link:disabled
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// c-button
+// -----------------------------------------------------------------------------
+.c-button {
+  // c-button, c-button:link, c-button:visited
+  &,
+  &:link,
+  &:visited {
+    border: 0;
+  }
+
+  // c-button--default
   &--default {
     padding: px-to-rem(10px) px-to-rem(30px);
     border-radius: px-to-rem(25px);
     transition: $duration-0-3s;
   }
 
-  // c-button-link--color
+  // c-button--color
   &--color {
-    // c-button-link--color-base-3
+    // c-button--color-base-3
     &-base-3 {
       background-color: $color-base-3;
-      color: #fff;
+      color: $color-base-2;
 
-      // c-button-link--color-base-3:hover
+      // c-button--color-base-3:hover
       &:hover {
-        // c-button-link--color-base-3:hover:not([disabled])
+        // c-button--color-base-3:hover:not([disabled])
         &:not([disabled]) {
           background-color: $color-primary;
           transform: translate3d(0, px-to-rem(-4px), 0);
         }
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// c-link
+// -----------------------------------------------------------------------------
+.c-link {
+  // c-link--default
+  &--default {
+    padding-bottom: px-to-rem(3px);
+    border-bottom: px-to-rem(1px) solid;
+    transition: $duration-0-2s;
+  }
+
+  // c-link--color
+  &--color {
+    // c-link--color-base-3
+    &-base-3 {
+      color: $color-base-3;
+
+      // c-link--color-base-3:hover
+      &:hover {
+        border-bottom: px-to-rem(1px) solid;
+        color: $color-primary;
       }
     }
   }
