@@ -2,29 +2,28 @@
 @import 'styles/abstracts/functions';
 
 // -----------------------------------------------------------------------------
-// l-header
+// l-auth
 // -----------------------------------------------------------------------------
-.l-header {
-  position: sticky;
-  top: 0;
-  z-index: zindex('l-header');
-  border-bottom: px-to-rem(1px) solid $color-primary;
-  background-color: $color-base-2;
+.l-auth {
+  display: grid;
+  align-content: center;
+  align-self: center;
+  justify-items: center;
+  min-height: px-to-rem(735px);
 
   // ---------------------------------------------------------------------------
-  // l-header__container
+  // l-auth__logo
   // ---------------------------------------------------------------------------
-  &__container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: px-to-rem(84px);
+  &__logo {
+    font-size: px-to-rem(100px);
   }
 
   // ---------------------------------------------------------------------------
-  // l-header__logo
+  // l-auth__image
   // ---------------------------------------------------------------------------
-  &__logo {
-    margin-top: px-to-rem(-12px);
+  &__image {
+    grid-row: span 2;
+    object-fit: cover;
+    height: 100%;
   }
 }

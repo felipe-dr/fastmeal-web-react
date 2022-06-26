@@ -34,9 +34,9 @@
   &:hover,
   &:focus {
     border-color: $color-primary;
-    background-color: #fff;
+    background-color: $color-base-2;
     color: $color-primary;
-    box-shadow: 0 0 0 px-to-rem(3px) hexa-to-rgba($color-primary, 0.12);
+    box-shadow: 0 0 0 px-to-rem(3px) hexa-to-rgba($color-primary, 0.25);
     outline: none;
   }
 

@@ -1,0 +1,67 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/functions';
+
+// -----------------------------------------------------------------------------
+// c-input
+// -----------------------------------------------------------------------------
+.c-input {
+  // ---------------------------------------------------------------------------
+  // c-input__label
+  // ---------------------------------------------------------------------------
+  &__label {
+    display: block;
+    padding-bottom: px-to-rem(4px);
+    color: $color-base-3;
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-input__field
+  // ---------------------------------------------------------------------------
+  &__field {
+    display: block;
+    width: 100%;
+    padding: px-to-rem(10px) px-to-rem(15px);
+    border: px-to-rem(1px) solid $color-base-1;
+    border-radius: px-to-rem(25px);
+    background-color: $color-secondary;
+    color: inherit;
+    font-size: px-to-rem(16px);
+    font-family: inherit;
+    transition: $duration-0-2s;
+
+    // c-input__field:hover, c-input__field:focus
+    &:hover,
+    &:focus {
+      outline: none;
+    }
+
+    // c-input__field--hover-focus
+    &--hover-focus {
+      // c-input__field--hover-focus:hover, c-input__field--hover-focus:focus
+      &:hover,
+      &:focus {
+        border-color: $color-primary;
+        box-shadow: 0 0 0 px-to-rem(3px) hexa-to-rgba($color-primary, 0.25);
+      }
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-input__icon
+  // ---------------------------------------------------------------------------
+  &__icon {
+    position: absolute;
+    display: flex;
+    align-self: center;
+    margin-left: px-to-rem(15px);
+    pointer-events: none;
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-input__feedback
+  // ---------------------------------------------------------------------------
+  &__feedback {
+    margin: px-to-rem(2px) 0 0 px-to-rem(15px);
+    font-size: px-to-rem(14px);
+  }
+}

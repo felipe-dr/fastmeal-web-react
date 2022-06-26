@@ -30,6 +30,18 @@ $utility-prefix: 'u';
       @include generate-properties($text-decorations, 'text-decoration', $break-name);
     }
 
+    .#{$utility-prefix}-gap {
+      @include generate-properties($gap, 'gap', $break-name);
+    }
+
+    .#{$utility-prefix}-gap-x {
+      @include generate-properties($gap, 'column-gap', $break-name);
+    }
+
+    .#{$utility-prefix}-gap-y {
+      @include generate-properties($gap, 'row-gap', $break-name);
+    }
+
     .#{$utility-prefix}-m {
       @include generate-spacing($side-positions, $space-amounts, 'margin', $break-name);
     }

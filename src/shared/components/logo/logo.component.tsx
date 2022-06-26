@@ -12,6 +12,7 @@ export default function Logo({
   linkStyleClasses,
   styleClasses,
   hasLink = true,
+  hasOnClick = true,
 }: LogoProps): JSX.Element {
   const { closeNavbar } = useNavbarContext();
 
@@ -35,7 +36,7 @@ export default function Logo({
           'u-display-flex': true,
         })}
         to="/"
-        onClick={closeNavbar}
+        onClick={hasOnClick ? closeNavbar : undefined}
       >
         {createLogoIcon()}
       </Link>
