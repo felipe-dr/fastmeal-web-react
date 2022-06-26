@@ -1,7 +1,10 @@
 import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
 
+import SignIn from 'features/auth/components/sign-in/sign-in.component';
+import SignUp from 'features/auth/components/sign-up/sign-up.component';
 import Home from 'features/home/pages/home.component';
 
+import MainAuth from 'layouts/auth/main-auth/main-auth.component';
 import MainWebsite from 'layouts/website/main-website/main-website.component';
 
 function Routes() {
@@ -13,6 +16,20 @@ function Routes() {
         {
           path: '/',
           element: <Home />,
+        },
+      ],
+    },
+    {
+      path: '/auth',
+      element: <MainAuth />,
+      children: [
+        {
+          path: 'signin',
+          element: <SignIn />,
+        },
+        {
+          path: 'signup',
+          element: <SignUp />,
         },
       ],
     },
