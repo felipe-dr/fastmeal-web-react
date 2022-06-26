@@ -13,6 +13,8 @@ $color-secondary: #f8f9fa;
 $color-base-1: #cecfd0;
 $color-base-2: #fff;
 $color-base-3: #1a1a1a;
+$color-danger: #dc3545;
+$color-success: #198754;
 
 $colors: (
   'primary': $color-primary,
@@ -20,6 +22,8 @@ $colors: (
   'base-1': $color-base-1,
   'base-2': $color-base-2,
   'base-3': $color-base-3,
+  'danger': $color-danger,
+  'success': $color-success,
 );
 
 // -----------------------------------------------------------------------------
@@ -106,6 +110,12 @@ $breakpoints: (
 // Grid
 // -----------------------------------------------------------------------------
 $grid-gap: 30px;
+
+$gap: (
+  '0': 0,
+  '5': (5px / $font-size-default) + rem,
+  '20': (20px / $font-size-default) + rem,
+);
 
 // -----------------------------------------------------------------------------
 // Side positions
