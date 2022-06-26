@@ -27,7 +27,7 @@ export default function Navbar(): JSX.Element {
         <NavbarLinks routes={ROUTES} />
         <ul className={styles['c-navbar__list']}>
           <li>
-            <RoundedLink linkPath="/auth" linkLabel="Conta">
+            <RoundedLink linkPath="/auth/signin" linkLabel="Conta">
               <RiUserLine
                 className="u-flex-shrink-0 u-mr-5 u-mr-md-0"
                 size={20}
