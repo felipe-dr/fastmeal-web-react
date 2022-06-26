@@ -34,6 +34,7 @@ export default function Intro(): JSX.Element {
       </header>
       <ButtonLink
         elementType="link"
+        visualType="button"
         appearance="default"
         color="base-3"
         to="/restaurants"
