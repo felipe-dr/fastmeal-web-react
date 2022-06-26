@@ -9,7 +9,7 @@
   top: 0;
   z-index: zindex('l-header');
   border-bottom: px-to-rem(1px) solid $color-primary;
-  background-color: #fff;
+  background-color: $color-base-2;
 
   // ---------------------------------------------------------------------------
   // l-header__container
