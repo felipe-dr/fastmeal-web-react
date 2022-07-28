@@ -1,0 +1,29 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/functions';
+
+// -----------------------------------------------------------------------------
+// c-errors
+// -----------------------------------------------------------------------------
+.c-errors {
+  width: 100%;
+  padding: px-to-rem(15px);
+  border: px-to-rem(1px) solid hexa-to-rgba($color-danger, 0.2);
+  border-radius: px-to-rem(5px);
+  background-color: hexa-to-rgba($color-danger, 0.2);
+  color: $color-danger;
+
+  // ---------------------------------------------------------------------------
+  // c-errors__title
+  // ---------------------------------------------------------------------------
+  &__title {
+    margin-bottom: px-to-rem(10px);
+    font-size: px-to-rem(17px);
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-errors__item
+  // ---------------------------------------------------------------------------
+  &__item {
+    list-style: inside;
+  }
+}
