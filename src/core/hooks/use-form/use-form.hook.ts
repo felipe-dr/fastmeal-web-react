@@ -1,17 +1,18 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import { ChangeEvent, useState } from 'react';
 
-import FORM_REGEX from 'core/constants/regex';
+import formRegex from 'core/constants/regex';
 import stringToBoolean from 'core/utils/conversions/conversions.util';
 
+import { GetValidatorParams } from './interfaces/get-validator.interface';
+import { HandleClearParams } from './interfaces/handle-clear.interface';
+import { HandleResponseParams } from './interfaces/handle-response.interface';
+import { UseFormProps, UseFormReturn } from './interfaces/use-form.interface';
 import {
-  GetValidatorParams,
-  HandleClearParams,
   HandleSubmitParams,
-  UseFormProps,
-  UseFormReturn,
-  ValidatorsKeyof,
-} from './types/use-form.type';
+  HandleSubmitReturn,
+} from './types/handle-submit.type';
+import { ValidatorsKeyof } from './types/validators.type';
 
 /**
  * Hook that receives a list with validation types and field name, in order to
@@ -60,7 +61,7 @@ export default function useForm({
         message: `${fieldName} deve ter no mínimo ${validatorValue} caracteres.`,
       },
       email: {
-        isValid: stringToBoolean(`${FORM_REGEX.email.test(fieldValue)}`),
+        isValid: stringToBoolean(`${formRegex.EMAIL.test(fieldValue)}`),
         message: `${fieldName} inválido.`,
       },
       equals: {
@@ -161,28 +162,64 @@ export function handleClear({ formFields }: HandleClearParams): void {
 }
 
 /**
- * Function that receives an object with form fields and returns whether it is
- * valid or not.
+ * Function that receives an object with form fields, returning if it is valid
+ * or not, as well as an object with the name and value of each form field.
  *
  * @typedef {object} HandleSubmitParams
- * @property {FormEvent} event
  * @property {object} formFields
- * @returns {boolean}
+ * @returns {HandleSubmitReturn}
  */
 export function handleSubmit({
-  event,
   formFields,
-}: HandleSubmitParams): boolean {
-  event.preventDefault();
+}: HandleSubmitParams): HandleSubmitReturn {
   let isValidForm = true;
+  const formFieldsObject: { [key: string]: string } = {};
 
   Object.entries(formFields).forEach((field) => {
     const isValidField = field[1].validate();
+
+    formFieldsObject[field[0]] = field[1].value;
 
     if (!isValidField) {
       isValidForm = false;
     }
   });
 
-  return isValidForm;
+  return { isValidForm, formFieldsObject };
+}
+
+/**
+ * Function that receives a response and form fields, to display a custom or
+ * standardized response message, clear the form fields on success, and return
+ * the status of that response.
+ *
+ * @typedef {object} HandleResponseParams<T>
+ * @property {HttpResponse} response
+ * @property {object} formFields
+ * @property {string} [customSuccessMessage]
+ * @property {string} [customErrorMessage]
+ * @returns {boolean}
+ */
+export function handleResponse<T>({
+  response,
+  formFields,
+  customSuccessMessage,
+  customErrorMessage,
+}: HandleResponseParams<T>): boolean {
+  const { parseBody } = response;
+  const isSuccessResponse = parseBody?.success;
+  const responseMessage = parseBody?.statusMessage;
+  const successMessage = customSuccessMessage || responseMessage;
+  const errorMessage = customErrorMessage || responseMessage;
+
+  if (isSuccessResponse) {
+    alert(successMessage);
+    handleClear({ formFields });
+
+    return true;
+  }
+
+  alert(errorMessage);
+
+  return false;
 }

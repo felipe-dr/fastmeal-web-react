@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
-import BREAKPOINTS from 'core/constants/breakpoints';
+import appBreakpoints from 'core/constants/breakpoints';
 
 import {
   BreakpointContextData,
@@ -46,8 +46,8 @@ export function useBreakpointContext(): BreakpointContextProps {
   }
 
   const { breakpoints, setBreakpoints } = useContext(BreakpointContext);
-  const isMobile: boolean = breakpoints.md;
-  const inputBreakpoints: { [key: string]: string } = BREAKPOINTS;
+  const isMobile: boolean = breakpoints.MD;
+  const inputBreakpoints: { [key: string]: string } = appBreakpoints;
 
   useEffect(() => {
     const mediaQueryList: { [key: string]: MediaQueryList } = {};

@@ -2,38 +2,28 @@
 @import 'styles/abstracts/functions';
 
 // -----------------------------------------------------------------------------
-// l-auth
+// c-errors
 // -----------------------------------------------------------------------------
-.l-auth {
-  display: grid;
-  align-content: center;
-  align-self: center;
-  justify-items: center;
-  max-width: px-to-rem(440px);
-  min-height: px-to-rem(735px);
+.c-errors {
+  width: 100%;
+  padding: px-to-rem(15px);
+  border: px-to-rem(1px) solid hexa-to-rgba($color-danger, 0.2);
+  border-radius: px-to-rem(5px);
+  background-color: hexa-to-rgba($color-danger, 0.2);
+  color: $color-danger;
 
   // ---------------------------------------------------------------------------
-  // l-auth__logo
+  // c-errors__title
   // ---------------------------------------------------------------------------
-  &__logo {
-    font-size: px-to-rem(100px);
-  }
-
   &__title {
-    width: 100%;
-    margin-top: px-to-rem(15px);
-    padding-bottom: px-to-rem(5px);
-    border-bottom: px-to-rem(1px) solid hexa-to-rgba($color-base-1, 0.5);
-    color: $color-base-3;
-    text-align: center;
+    margin-bottom: px-to-rem(10px);
+    font-size: px-to-rem(17px);
   }
 
   // ---------------------------------------------------------------------------
-  // l-auth__image
+  // c-errors__item
   // ---------------------------------------------------------------------------
-  &__image {
-    grid-row: span 2;
-    object-fit: cover;
-    height: 100%;
+  &__item {
+    list-style: inside;
   }
 }

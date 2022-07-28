@@ -28,10 +28,10 @@ export default function Auth(): JSX.Element {
         })}
       >
         <Logo styleClasses={styles['l-auth__logo']} hasOnClick={false} />
-        <h2 className="u-text-base-3 u-mt-15">{formTitle}</h2>
+        <h2 className={styles['l-auth__title']}>{formTitle}</h2>
         <Outlet />
       </section>
-      {breakpoints?.md === false && (
+      {breakpoints?.MD === false && (
         <img
           className={styles['l-auth__image']}
           srcSet={`${authBurgerMd} 1200w, ${authBurgerLg} 1920w`}
