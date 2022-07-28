@@ -18,7 +18,10 @@
           "px-to-rem",
           "px-to-em",
           "hexa-to-rgba",
-          "zindex"
+          "zindex",
+          "if",
+          "str-slice",
+          "type-of"
         ]
       }
     ],
