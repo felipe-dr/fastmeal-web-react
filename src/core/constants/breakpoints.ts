@@ -1,9 +1,9 @@
-const BREAKPOINTS = {
-  xs: '(max-width: 319px)',
-  sm: '(max-width: 599px)',
-  md: '(max-width: 899px)',
-  lg: '(max-width: 1199px)',
-  xl: '(max-width: 1449px)',
+const appBreakpoints = {
+  XS: '(max-width: 319px)',
+  SM: '(max-width: 599px)',
+  MD: '(max-width: 899px)',
+  LG: '(max-width: 1199px)',
+  XL: '(max-width: 1449px)',
 };
 
-export default Object.freeze(BREAKPOINTS);
+export default Object.freeze(appBreakpoints);
