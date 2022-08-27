@@ -5,4 +5,5 @@ export interface User extends Partial<BaseModel> {
   email: string;
   password: string;
   passwordConfirm: string;
+  accessToken: string;
 }
