@@ -5,7 +5,8 @@ export interface NavbarContextData {
   setShowNavbar: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export interface NavbarContextProps extends Partial<NavbarContextData> {
+export interface NavbarContextReturn {
+  showNavbar: boolean;
   handleNavbar: () => void;
   closeNavbar: () => void;
 }

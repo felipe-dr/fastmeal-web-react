@@ -7,7 +7,8 @@ export interface BreakpointContextData {
   >;
 }
 
-export interface BreakpointContextProps extends Partial<BreakpointContextData> {
+export interface BreakpointContextReturn {
+  breakpoints: { [key: string]: boolean };
   isMobile: boolean;
 }
 

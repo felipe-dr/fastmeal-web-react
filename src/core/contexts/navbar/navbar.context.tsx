@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 import {
   NavbarContextData,
-  NavbarContextProps,
+  NavbarContextReturn,
   NavbarProviderProps,
 } from './interfaces/navbar.interface';
 
@@ -11,7 +11,8 @@ const NavbarContext = createContext<NavbarContextData>({} as NavbarContextData);
 /**
  * Component responsible for providing the navbar context.
  *
- * @param {ReactNode} children
+ * @typedef {object} NavbarProviderProps
+ * @property {ReactNode} children
  * @returns {JSX.Element}
  */
 export default function NavbarProvider({
@@ -31,9 +32,9 @@ export default function NavbarProvider({
  * This is done to prevent the page from scrolling while the navigation bar is
  * active.
  *
- * @returns {NavbarContextProps}
+ * @returns {NavbarContextReturn}
  */
-export function useNavbarContext(): NavbarContextProps {
+export function useNavbarContext(): NavbarContextReturn {
   if (useContext(NavbarContext) === undefined) {
     throw new Error('useNavbarContext must be used within a NavbarProvider');
   }
@@ -58,7 +59,7 @@ export function useNavbarContext(): NavbarContextProps {
     return () => {
       bodyElement.classList.remove('u-overflow-hidden');
     };
-  });
+  }, [showNavbar]);
 
   return { showNavbar, handleNavbar, closeNavbar };
 }
