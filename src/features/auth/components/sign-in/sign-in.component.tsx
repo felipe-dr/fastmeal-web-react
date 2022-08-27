@@ -3,12 +3,9 @@ import { FormEvent } from 'react';
 import { RiLock2Line, RiMailLine } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
 
+import { useUserContext } from 'core/contexts/user/user.context';
 import useFetch from 'core/hooks/use-fetch/use-fetch.hook';
-import useForm, {
-  handleResponse,
-  handleSubmit,
-} from 'core/hooks/use-form/use-form.hook';
-import AuthService from 'core/services/auth/auth.service';
+import useForm, { handleSubmit } from 'core/hooks/use-form/use-form.hook';
 
 import ButtonLink from 'shared/components/button-link/button-link.component';
 import Errors from 'shared/components/errors/errors.component';
@@ -18,8 +15,9 @@ import { ServiceRequest } from 'shared/types/service-request.type';
 import { User } from 'features/auth/interfaces/user.interface';
 
 export default function SignIn(): JSX.Element {
+  const { request, statusMessage, isLoading, errors } = useFetch<User>();
+  const { signIn } = useUserContext();
   const navigate = useNavigate();
-  const { request, statusMessage, errors } = useFetch<User>();
 
   const formFields = {
     email: useForm({
@@ -36,18 +34,16 @@ export default function SignIn(): JSX.Element {
     event: FormEvent<HTMLFormElement>,
     serviceRequest: ServiceRequest<User>
   ): Promise<void> {
-    const { isValidForm, formFieldsObject } = handleSubmit({ formFields });
-    let isSuccessResponse: boolean;
-
     event.preventDefault();
 
-    if (isValidForm) {
-      const authService = AuthService.getInstance();
-      const response = await serviceRequest(
-        authService.signIn(formFieldsObject)
-      );
+    const { isValidForm, formFieldsObject } = handleSubmit({ formFields });
 
-      isSuccessResponse = handleResponse({ response, formFields });
+    if (isValidForm) {
+      const isSuccessResponse = await signIn({
+        serviceRequest,
+        formFieldsObject,
+        formFields,
+      });
 
       if (isSuccessResponse) {
         navigate(-1);
@@ -90,6 +86,8 @@ export default function SignIn(): JSX.Element {
           visualType="button"
           appearance="default"
           color="base-3"
+          hoverColor="primary"
+          disabled={isLoading}
           type="submit"
         >
           Entrar
@@ -102,6 +100,7 @@ export default function SignIn(): JSX.Element {
           visualType="link"
           appearance="default"
           color="base-3"
+          hoverColor="primary"
           to="/auth/signup"
         >
           Criar nova conta
