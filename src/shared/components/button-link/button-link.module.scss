@@ -2,6 +2,13 @@
 @import 'styles/abstracts/functions';
 @import 'styles/abstracts/mixins';
 
+// TODO: migrate to /styles/abstracts
+@mixin color-primary {
+  border-color: $color-primary;
+  background-color: $color-primary;
+  color: $color-base-2;
+}
+
 .c-button,
 .c-link {
   // c-button, c-button:link, c-button:visited, c-link, c-link:link, c-link:visited
@@ -12,7 +19,6 @@
     font-size: inherit;
     font-family: inherit;
     line-height: inherit;
-    text-align: center;
     text-decoration: none;
     cursor: pointer;
   }
@@ -25,7 +31,6 @@
 
   // c-button:disabled, c-link:disabled
   &:disabled {
-    opacity: 0.4;
     cursor: not-allowed;
   }
 }
@@ -38,7 +43,7 @@
   &,
   &:link,
   &:visited {
-    border: 0;
+    border-width: 0;
   }
 
   // c-button--default
@@ -46,6 +51,26 @@
     padding: px-to-rem(10px) px-to-rem(30px);
     border-radius: px-to-rem(25px);
     transition: $duration-0-3s;
+
+    // c-button--default:hover
+    &:hover {
+      // c-button--default:hover:not([disabled])
+      &:not([disabled]) {
+        transform: translate3d(0, px-to-rem(-4px), 0);
+      }
+    }
+  }
+
+  // c-button--round
+  &--round {
+    position: relative;
+    align-items: center;
+    width: max-content;
+    padding: px-to-rem(14px);
+    border: px-to-rem(1px) solid $color-base-1;
+    border-radius: 100%;
+    color: $color-base-3;
+    transition: $duration-0-2s;
   }
 
   // c-button--color
@@ -55,14 +80,51 @@
       background-color: $color-base-3;
       color: $color-base-2;
 
-      // c-button--color-base-3:hover
-      &:hover {
-        // c-button--color-base-3:hover:not([disabled])
-        &:not([disabled]) {
-          background-color: $color-primary;
-          transform: translate3d(0, px-to-rem(-4px), 0);
-        }
+      // c-button--color-base-3:disabled
+      &:disabled {
+        background-color: hexa-to-rgba($color-base-3, 0.4);
       }
+    }
+
+    // c-button--color-transparent
+    &-transparent {
+      background-color: transparent;
+      color: $color-base-3;
+
+      // c-button--color-transparent:disabled
+      &:disabled {
+        color: hexa-to-rgba($color-base-3, 0.4);
+      }
+    }
+  }
+
+  // c-button--hover-color
+  &--hover-color {
+    // c-button--hover-color-primary:hover:not([disabled])
+    &-primary:hover:not([disabled]) {
+      @include color-primary;
+    }
+  }
+
+  // c-button--active-color
+  &--active-color {
+    // c-button--active-color--primary
+    &-primary {
+      @include color-primary;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-button__label
+  // ---------------------------------------------------------------------------
+  &__label {
+    position: absolute;
+    left: 100%;
+    margin-left: px-to-rem(5px);
+    color: $color-base-3;
+
+    @include media-breakpoint('md') {
+      display: none;
     }
   }
 }
@@ -84,11 +146,19 @@
     &-base-3 {
       color: $color-base-3;
 
-      // c-link--color-base-3:hover
-      &:hover {
-        border-bottom: px-to-rem(1px) solid;
-        color: $color-primary;
+      // c-link--color-base-3:disabled
+      &:disabled {
+        color: hexa-to-rgba($color-base-3, 0.4);
       }
+    }
+  }
+
+  // c-link--hover-color
+  &--hover-color {
+    // c-link--hover-color-primary:hover:not([disabled])
+    &-primary:hover:not([disabled]) {
+      border-bottom: px-to-rem(1px) solid;
+      color: $color-primary;
     }
   }
 }

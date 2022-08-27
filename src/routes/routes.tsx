@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
 
+import UserProvider from 'core/contexts/user/user.context';
+
 import SignIn from 'features/auth/components/sign-in/sign-in.component';
 import SignUp from 'features/auth/components/sign-up/sign-up.component';
 import Home from 'features/home/pages/home.component';
@@ -41,7 +43,9 @@ function Routes() {
 export default function AppRouter(): JSX.Element {
   return (
     <Router>
-      <Routes />
+      <UserProvider>
+        <Routes />
+      </UserProvider>
     </Router>
   );
 }

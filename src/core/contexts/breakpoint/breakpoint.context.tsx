@@ -4,7 +4,7 @@ import appBreakpoints from 'core/constants/breakpoints';
 
 import {
   BreakpointContextData,
-  BreakpointContextProps,
+  BreakpointContextReturn,
   BreakpointProviderProps,
 } from './interfaces/breakpoint.interface';
 
@@ -15,7 +15,8 @@ const BreakpointContext = createContext<BreakpointContextData>(
 /**
  * Component responsible for providing the breakpoint context.
  *
- * @param {ReactNode} children
+ * @typedef {object} BreakpointProviderProps
+ * @property {ReactNode} children
  * @returns {JSX.Element}
  */
 export default function BreakpointProvider({
@@ -36,9 +37,9 @@ export default function BreakpointProvider({
  * is or no longer a match between this list and the predefined list of
  * media queries.
  *
- * @returns {BreakpointContextProps}
+ * @returns {BreakpointContextReturn}
  */
-export function useBreakpointContext(): BreakpointContextProps {
+export function useBreakpointContext(): BreakpointContextReturn {
   if (useContext(BreakpointContext) === undefined) {
     throw new Error(
       'useBreakpointContext must be used within BreakpointProvider'

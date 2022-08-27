@@ -131,6 +131,10 @@ $utility-prefix: 'u';
       @include generate-properties($vertical-aligns, 'vertical-align', $break-name);
     }
 
+    .#{$utility-prefix}-cursor {
+      @include generate-properties($cursor, 'cursor', $break-name);
+    }
+
     .#{$utility-prefix}-overflow {
       @include generate-properties($overflows, 'overflow', $break-name);
     }

@@ -37,6 +37,7 @@ export default function Intro(): JSX.Element {
         visualType="button"
         appearance="default"
         color="base-3"
+        hoverColor="primary"
         to="/restaurants"
       >
         Restaurantes
