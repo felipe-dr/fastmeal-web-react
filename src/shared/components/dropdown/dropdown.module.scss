@@ -1,0 +1,84 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/functions';
+
+// -----------------------------------------------------------------------------
+// c-dropdown
+// -----------------------------------------------------------------------------
+.c-dropdown {
+  position: relative;
+  font-size: px-to-rem(15px);
+
+  // ---------------------------------------------------------------------------
+  // c-dropdown__list
+  // ---------------------------------------------------------------------------
+  &__list {
+    position: absolute;
+    right: 0;
+    min-width: px-to-rem(180px);
+    padding: px-to-rem(10px) px-to-rem(15px);
+    border: px-to-rem(1px) solid hexa-to-rgba($color-base-1);
+    border-top-width: px-to-rem(2px);
+    border-top-color: $color-primary;
+    border-radius: px-to-rem(5px);
+    background-color: $color-base-2;
+    opacity: 0;
+    visibility: hidden;
+    transition: $duration-0-2s;
+
+    // c-dropdown__list--active
+    &--active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-dropdown__divider
+  // ---------------------------------------------------------------------------
+  &__divider {
+    border-bottom: px-to-rem(1px) solid hexa-to-rgba($color-base-1, 0.35);
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-dropdown__link, c-dropdown__text
+  // ---------------------------------------------------------------------------
+  &__link,
+  &__text {
+    width: 100%;
+    padding: px-to-rem(5px) px-to-rem(10px);
+    color: inherit;
+    text-align: left;
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-dropdown__link
+  // ---------------------------------------------------------------------------
+  &__link {
+    transition: $duration-0-2s;
+
+    // c-dropdown__link--disabled
+    &--disabled {
+      color: hexa-to-rgba($color-base-3, 0.4);
+    }
+
+    // c-dropdown__link:hover
+    &:hover {
+      /* stylelint-disable-next-line selector-class-pattern */
+      &:not(.c-dropdown__link--disabled) {
+        color: $color-primary;
+      }
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-dropdown__text
+  // ---------------------------------------------------------------------------
+  &__text {
+    // c-dropdown__text--overflow-ellipsis
+    &--overflow-ellipsis {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
