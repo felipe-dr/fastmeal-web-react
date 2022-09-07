@@ -13,6 +13,25 @@ body {
   word-break: break-word;
 }
 
+.t1 {
+  font-size: px-to-rem(30px);
+  letter-spacing: px-to-rem(1.2px);
+  text-transform: uppercase;
+
+  @include media-breakpoint('sm') {
+    font-size: px-to-rem(38px);
+    letter-spacing: px-to-rem(2.5px);
+  }
+}
+
+.t2 {
+  font-size: px-to-rem(20px);
+}
+
+.t3 {
+  font-size: px-to-rem(18px);
+}
+
 .s1 {
   font-size: px-to-rem(15px);
 }
