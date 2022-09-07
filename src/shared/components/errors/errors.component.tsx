@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import styles from './errors.module.scss';
 import { ErrorsProps } from './interfaces/errors.interface';
 
-export default function Errors({
+export default function ErrorsComponent({
   styleClasses,
   hasErrorTitle = true,
   errorTitle,

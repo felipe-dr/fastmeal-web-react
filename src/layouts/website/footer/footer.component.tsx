@@ -1,6 +1,6 @@
 import styles from './footer.module.scss';
 
-export default function Footer(): JSX.Element {
+export default function FooterComponent(): JSX.Element {
   return (
     <footer className={styles['l-footer']}>
       <div className="grid-container u-text-center">

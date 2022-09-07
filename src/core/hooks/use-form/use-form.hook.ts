@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import { ChangeEvent, useState } from 'react';
 
-import formRegex from 'core/constants/regex';
+import formRegex from 'core/constants/regex.constant';
 import stringToBoolean from 'core/utils/conversions/conversions.util';
 
 import { GetValidatorParams } from './interfaces/get-validator.interface';

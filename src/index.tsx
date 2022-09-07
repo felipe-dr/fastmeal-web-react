@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 
 import 'styles/main.scss';
 
-import AppRouter from 'routes/routes';
+import AppRouterComponent from 'routes/routes';
 
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <AppRouter />
+    <AppRouterComponent />
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,11 +1,11 @@
 import classNames from 'classnames';
 
-import Logo from 'shared/components/logo/logo.component';
-import Navbar from 'shared/components/navbar/navbar.component';
+import LogoComponent from 'shared/components/logo/logo.component';
+import NavbarComponent from 'shared/components/navbar/navbar.component';
 
 import styles from './header.module.scss';
 
-export default function Header(): JSX.Element {
+export default function HeaderComponent(): JSX.Element {
   return (
     <header
       className={classNames({
@@ -19,8 +19,8 @@ export default function Header(): JSX.Element {
           [styles['l-header__container']]: true,
         })}
       >
-        <Logo linkStyleClasses={styles['l-header__logo']} />
-        <Navbar />
+        <LogoComponent linkStyleClasses={styles['l-header__logo']} />
+        <NavbarComponent />
       </div>
     </header>
   );

@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
-import appBreakpoints from 'core/constants/breakpoints';
+import appBreakpoints from 'core/constants/breakpoints.constant';
 
 import {
   BreakpointContextData,

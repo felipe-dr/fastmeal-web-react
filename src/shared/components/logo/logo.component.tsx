@@ -8,7 +8,7 @@ import { useNavbarContext } from 'core/contexts/navbar/navbar.context';
 import { LogoProps } from './interfaces/logo.interface';
 import styles from './logo.module.scss';
 
-export default function Logo({
+export default function LogoComponent({
   linkStyleClasses,
   styleClasses,
   hasLink = true,

@@ -6,7 +6,7 @@ import { useNavbarContext } from 'core/contexts/navbar/navbar.context';
 import { NavbarLinksProps } from './interfaces/navbar-links.interface';
 import styles from './navbar-links.module.scss';
 
-export default function NavbarLinks({
+export default function NavbarLinksComponent({
   styleClasses,
   routes,
 }: NavbarLinksProps): JSX.Element {

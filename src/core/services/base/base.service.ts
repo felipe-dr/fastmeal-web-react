@@ -1,4 +1,4 @@
-import config from 'core/constants/config';
+import config from 'core/constants/config.constant';
 
 import { HttpResponse } from 'shared/interfaces/http-response.interface';
 

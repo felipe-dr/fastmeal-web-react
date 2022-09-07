@@ -11,7 +11,9 @@ import { ButtonLinkAppearance } from './types/button-link-appearance.type';
 import { ButtonLinkVisualType } from './types/button-link-visual-type.type';
 import { ButtonLinkProps } from './types/button-link.type';
 
-export default function ButtonLink(props: ButtonLinkProps): JSX.Element {
+export default function ButtonLinkComponent(
+  props: ButtonLinkProps
+): JSX.Element {
   function addStyleClasses(
     visualType: ButtonLinkVisualType | undefined,
     appearance: ButtonLinkAppearance | undefined,

@@ -4,7 +4,7 @@ import { useNavbarContext } from 'core/contexts/navbar/navbar.context';
 
 import styles from './mobile-nav-button.module.scss';
 
-export default function MobileNavButton(): JSX.Element {
+export default function MobileNavButtonComponent(): JSX.Element {
   const { showNavbar, handleNavbar } = useNavbarContext();
 
   return (
