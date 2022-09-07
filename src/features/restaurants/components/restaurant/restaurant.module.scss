@@ -1,0 +1,50 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/functions';
+@import 'styles/abstracts/mixins';
+
+// -----------------------------------------------------------------------------
+// c-restaurant
+// -----------------------------------------------------------------------------
+.c-restaurant {
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  padding: px-to-rem(20px);
+  border-bottom: 1px solid $color-base-1;
+  border-radius: px-to-rem(5px);
+  background-color: $color-base-2;
+  color: inherit;
+  transition: $duration-0-3s;
+
+  // c-restaurant:hover
+  &:hover {
+    border-color: $color-primary;
+    transform: translate3d(0, px-to-rem(-5px), 0);
+  }
+
+  @include media-breakpoint('sm') {
+    flex-direction: row;
+    column-gap: px-to-rem(20px);
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-restaurant__img
+  // ---------------------------------------------------------------------------
+  &__img {
+    max-height: px-to-rem(120px);
+    margin: px-to-rem(20px) px-to-rem(10px);
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-restaurant__rating
+  // ---------------------------------------------------------------------------
+  &__rating {
+    position: absolute;
+    top: px-to-rem(20px);
+    right: px-to-rem(20px);
+    display: flex;
+    align-items: center;
+    color: $color-base-3;
+    font-weight: bold;
+  }
+}

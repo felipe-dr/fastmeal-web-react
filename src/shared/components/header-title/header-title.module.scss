@@ -1,0 +1,18 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/functions';
+
+// -----------------------------------------------------------------------------
+// c-header-title
+// -----------------------------------------------------------------------------
+.c-header-title {
+  margin-bottom: px-to-rem(70px);
+  padding: px-to-rem(30) 0;
+  text-align: center;
+
+  // c-header-title--background
+  &--background {
+    background-color: $color-primary;
+    background-image: url('/assets/images/header-title/header-title-food.png');
+    background-position: center;
+  }
+}

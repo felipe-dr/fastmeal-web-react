@@ -1,0 +1,14 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/functions';
+@import 'styles/abstracts/mixins';
+
+// -----------------------------------------------------------------------------
+// l-restaurants
+// -----------------------------------------------------------------------------
+.l-restaurants {
+  display: grid;
+
+  @include media-breakpoint('md') {
+    grid-template-columns: repeat(2, 2fr);
+  }
+}

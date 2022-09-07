@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import styles from './input.module.scss';
 import { InputProps } from './interfaces/input.interface';
 
-export default function Input({
+export default function InputComponent({
   label,
   name,
   type,

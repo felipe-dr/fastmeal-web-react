@@ -6,11 +6,11 @@ import authBurgerMd from 'assets/images/auth/auth-burger-md.jpeg';
 
 import { useBreakpointContext } from 'core/contexts/breakpoint/breakpoint.context';
 
-import Logo from 'shared/components/logo/logo.component';
+import LogoComponent from 'shared/components/logo/logo.component';
 
 import styles from './auth.module.scss';
 
-export default function Auth(): JSX.Element {
+export default function AuthComponent(): JSX.Element {
   const { breakpoints } = useBreakpointContext();
 
   const location = useLocation();
@@ -27,7 +27,10 @@ export default function Auth(): JSX.Element {
           'u-py-45': true,
         })}
       >
-        <Logo styleClasses={styles['l-auth__logo']} hasOnClick={false} />
+        <LogoComponent
+          styleClasses={styles['l-auth__logo']}
+          hasOnClick={false}
+        />
         <h2 className={styles['l-auth__title']}>{formTitle}</h2>
         <Outlet />
       </section>

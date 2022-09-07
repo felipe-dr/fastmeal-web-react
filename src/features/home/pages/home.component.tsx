@@ -1,5 +1,5 @@
-import Intro from '../components/intro/intro.component';
+import IntroComponent from '../components/intro/intro.component';
 
-export default function Home(): JSX.Element {
-  return <Intro />;
+export default function HomeComponent(): JSX.Element {
+  return <IntroComponent />;
 }

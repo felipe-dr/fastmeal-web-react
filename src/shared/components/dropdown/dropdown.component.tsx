@@ -6,13 +6,13 @@ import useOutsideEvent from 'core/hooks/use-outside-event/use-outside-event.hook
 
 import { Colors } from 'shared/types/colors.type';
 
-import ButtonLink from '../button-link/button-link.component';
+import ButtonLinkComponent from '../button-link/button-link.component';
 import buttonLinkStyles from '../button-link/button-link.module.scss';
 import { ButtonLinkVisualType } from '../button-link/types/button-link-visual-type.type';
 import dropdownStyles from './dropdown.module.scss';
 import { DropdownItem, DropdownProps } from './interfaces/dropdown.interface';
 
-export default function Dropdown({
+export default function DropdownComponent({
   buttonAppearance,
   buttonColor,
   buttonActiveColor,
@@ -63,33 +63,33 @@ export default function Dropdown({
     switch (elementType) {
       case 'button':
         return (
-          <ButtonLink
+          <ButtonLinkComponent
             elementType={elementType}
             type="button"
             {...defaultButtonLink}
           >
             {label}
-          </ButtonLink>
+          </ButtonLinkComponent>
         );
       case 'link':
         return (
-          <ButtonLink
+          <ButtonLinkComponent
             elementType={elementType}
             to={isActive && linkPath ? linkPath : '#'}
             {...defaultButtonLink}
           >
             {label}
-          </ButtonLink>
+          </ButtonLinkComponent>
         );
       case 'externalLink':
         return (
-          <ButtonLink
+          <ButtonLinkComponent
             elementType={elementType}
             href={isActive && linkPath ? linkPath : '#'}
             {...defaultButtonLink}
           >
             {label}
-          </ButtonLink>
+          </ButtonLinkComponent>
         );
       default:
         return (
@@ -108,7 +108,7 @@ export default function Dropdown({
 
   return (
     <div className={dropdownStyles['c-dropdown']} ref={dropdownContainerRef}>
-      <ButtonLink
+      <ButtonLinkComponent
         elementType="button"
         visualType="button"
         appearance={buttonAppearance}
@@ -124,7 +124,7 @@ export default function Dropdown({
       >
         {buttonIcon && buttonIcon}
         {buttonLabel && buttonLabel}
-      </ButtonLink>
+      </ButtonLinkComponent>
       <ul
         className={classNames({
           [dropdownStyles['c-dropdown__list']]: true,

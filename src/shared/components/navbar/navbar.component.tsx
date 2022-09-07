@@ -6,19 +6,19 @@ import {
   RiUserLine,
 } from 'react-icons/ri';
 
-import ROUTES from 'core/constants/routes';
+import ROUTES from 'core/constants/routes.constant';
 import { useBreakpointContext } from 'core/contexts/breakpoint/breakpoint.context';
 import { useNavbarContext } from 'core/contexts/navbar/navbar.context';
 import { useUserContext } from 'core/contexts/user/user.context';
 
-import ButtonLink from '../button-link/button-link.component';
-import Dropdown from '../dropdown/dropdown.component';
+import ButtonLinkComponent from '../button-link/button-link.component';
+import DropdownComponent from '../dropdown/dropdown.component';
 import { DropdownItem } from '../dropdown/interfaces/dropdown.interface';
-import MobileNavButton from '../mobile-nav-button/mobile-nav-button.component';
-import NavbarLinks from '../navbar-links/navbar-links.component';
+import MobileNavButtonComponent from '../mobile-nav-button/mobile-nav-button.component';
+import NavbarLinksComponent from '../navbar-links/navbar-links.component';
 import styles from './navbar.module.scss';
 
-export default function Navbar(): JSX.Element {
+export default function NavbarComponent(): JSX.Element {
   const { isMobile } = useBreakpointContext();
   const { showNavbar, closeNavbar } = useNavbarContext();
   const { userEmail, isAuthenticatedUser, signOut } = useUserContext();
@@ -47,7 +47,7 @@ export default function Navbar(): JSX.Element {
     if (isMobile) {
       return (
         <>
-          <ButtonLink
+          <ButtonLinkComponent
             elementType="link"
             visualType="button"
             appearance="round"
@@ -57,11 +57,11 @@ export default function Navbar(): JSX.Element {
             to=""
           >
             <RiUserLine className="u-flex-shrink-0" size={20} />
-          </ButtonLink>
+          </ButtonLinkComponent>
           <div className="u-display-flex u-flex-align-items-center u-ml-5">
             {userEmail}
             <span className="u-mx-5">|</span>
-            <ButtonLink
+            <ButtonLinkComponent
               elementType="button"
               visualType="button"
               color="transparent"
@@ -72,14 +72,14 @@ export default function Navbar(): JSX.Element {
               }}
             >
               Sair
-            </ButtonLink>
+            </ButtonLinkComponent>
           </div>
         </>
       );
     }
 
     return (
-      <Dropdown
+      <DropdownComponent
         buttonAppearance="round"
         buttonColor="transparent"
         buttonActiveColor="primary"
@@ -104,7 +104,7 @@ export default function Navbar(): JSX.Element {
           [styles['c-navbar__desktop']]: !isMobile,
         })}
       >
-        <NavbarLinks routes={ROUTES} />
+        <NavbarLinksComponent routes={ROUTES} />
         <ul className={styles['c-navbar__list']}>
           <li
             className={classNames({
@@ -113,7 +113,7 @@ export default function Navbar(): JSX.Element {
             })}
           >
             {!isAuthenticatedUser ? (
-              <ButtonLink
+              <ButtonLinkComponent
                 elementType="link"
                 visualType="button"
                 appearance="round"
@@ -124,13 +124,13 @@ export default function Navbar(): JSX.Element {
                 to="/auth/signin"
               >
                 <RiUserLine className="u-flex-shrink-0" size={20} />
-              </ButtonLink>
+              </ButtonLinkComponent>
             ) : (
               handleUserItemList()
             )}
           </li>
           <li>
-            <ButtonLink
+            <ButtonLinkComponent
               elementType="link"
               visualType="button"
               appearance="round"
@@ -141,11 +141,11 @@ export default function Navbar(): JSX.Element {
               to="/cart"
             >
               <RiShoppingBasketLine className="u-flex-shrink-0" size={20} />
-            </ButtonLink>
+            </ButtonLinkComponent>
           </li>
         </ul>
       </div>
-      {isMobile && <MobileNavButton />}
+      {isMobile && <MobileNavButtonComponent />}
     </>
   );
 }

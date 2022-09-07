@@ -1,4 +1,4 @@
-import ENVIRONMENTS from './environments';
+import ENVIRONMENTS from './environments.constant';
 
 const config = {
   APP_PREFIX: 'fastmeal',

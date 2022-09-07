@@ -7,14 +7,14 @@ import { useUserContext } from 'core/contexts/user/user.context';
 import useFetch from 'core/hooks/use-fetch/use-fetch.hook';
 import useForm, { handleSubmit } from 'core/hooks/use-form/use-form.hook';
 
-import ButtonLink from 'shared/components/button-link/button-link.component';
-import Errors from 'shared/components/errors/errors.component';
-import Input from 'shared/components/input/input.component';
+import ButtonLinkComponent from 'shared/components/button-link/button-link.component';
+import ErrorsComponent from 'shared/components/errors/errors.component';
+import InputComponent from 'shared/components/input/input.component';
 import { ServiceRequest } from 'shared/types/service-request.type';
 
 import { User } from 'features/auth/interfaces/user.interface';
 
-export default function SignUp(): JSX.Element {
+export default function SignUpComponent(): JSX.Element {
   const [password, setPassword] = useState<string>('');
   const { request, statusMessage, isLoading, errors } = useFetch<User>();
   const { signUp } = useUserContext();
@@ -68,7 +68,7 @@ export default function SignUp(): JSX.Element {
   return (
     <>
       {errors?.length > 0 && (
-        <Errors
+        <ErrorsComponent
           styleClasses="u-mt-15"
           errorTitle={statusMessage}
           errors={errors}
@@ -78,7 +78,7 @@ export default function SignUp(): JSX.Element {
         className="l-form--auth u-display-grid u-gap-y-20 u-width-100 u-mt-30 u-mb-45"
         onSubmit={(event) => onSubmit(event, request)}
       >
-        <Input
+        <InputComponent
           name="name"
           type="text"
           placeholder="Nome"
@@ -86,32 +86,32 @@ export default function SignUp(): JSX.Element {
           {...formFields.name}
         >
           <RiUserLine size={20} className="u-text-base-3" />
-        </Input>
-        <Input
+        </InputComponent>
+        <InputComponent
           name="email"
           type="text"
           placeholder="E-mail"
           {...formFields.email}
         >
           <RiMailLine size={20} className="u-text-base-3" />
-        </Input>
-        <Input
+        </InputComponent>
+        <InputComponent
           name="password"
           type="password"
           placeholder="Senha"
           {...formFields.password}
         >
           <RiLock2Line size={20} className="u-text-base-3" />
-        </Input>
-        <Input
+        </InputComponent>
+        <InputComponent
           name="password-confirm"
           type="password"
           placeholder="Confirmar senha"
           {...formFields.passwordConfirm}
         >
           <RiLock2Line size={20} className="u-text-base-3" />
-        </Input>
-        <ButtonLink
+        </InputComponent>
+        <ButtonLinkComponent
           elementType="button"
           visualType="button"
           appearance="default"
@@ -121,11 +121,11 @@ export default function SignUp(): JSX.Element {
           type="submit"
         >
           Registrar
-        </ButtonLink>
+        </ButtonLinkComponent>
       </form>
       <div className="u-display-flex u-flex-wrap u-flex-justify-content-center u-gap-5 s1">
         <p>Já é registrado?</p>
-        <ButtonLink
+        <ButtonLinkComponent
           elementType="link"
           visualType="link"
           appearance="default"
@@ -134,7 +134,7 @@ export default function SignUp(): JSX.Element {
           to="/auth/signin"
         >
           Voltar e se autenticar
-        </ButtonLink>
+        </ButtonLinkComponent>
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-import localStorage from 'core/constants/local-storage';
+import localStorage from 'core/constants/local-storage.constant';
 import { getItemLocalStorage } from 'core/utils/local-storage/local-storage.util';
 
 import { HttpResponse } from 'shared/interfaces/http-response.interface';
