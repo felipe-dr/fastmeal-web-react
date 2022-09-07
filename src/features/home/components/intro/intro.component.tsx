@@ -1,20 +1,25 @@
 import classNames from 'classnames';
 
-import ButtonLink from 'shared/components/button-link/button-link.component';
-import Logo from 'shared/components/logo/logo.component';
+import ButtonLinkComponent from 'shared/components/button-link/button-link.component';
+import LogoComponent from 'shared/components/logo/logo.component';
 
 import styles from './intro.module.scss';
 
-export default function Intro(): JSX.Element {
+export default function IntroComponent(): JSX.Element {
   return (
-    <section className={styles['c-intro']}>
+    <section
+      className={classNames({
+        [styles['c-intro']]: true,
+        'u-pt-70': true,
+      })}
+    >
       <div className={styles['c-intro__bg']} />
       <header>
         <h1 className={styles['c-intro__title']}>
           <span className="s1 u-font-semibold u-text-primary u-text-uppercase">
             Está com fome?
           </span>
-          <Logo
+          <LogoComponent
             styleClasses={classNames({
               [styles['c-intro__logo']]: true,
               'u-mt-30': true,
@@ -32,7 +37,7 @@ export default function Intro(): JSX.Element {
           </span>
         </h1>
       </header>
-      <ButtonLink
+      <ButtonLinkComponent
         elementType="link"
         visualType="button"
         appearance="default"
@@ -41,7 +46,7 @@ export default function Intro(): JSX.Element {
         to="/restaurants"
       >
         Restaurantes
-      </ButtonLink>
+      </ButtonLinkComponent>
     </section>
   );
 }
