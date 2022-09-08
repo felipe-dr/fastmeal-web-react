@@ -1,16 +1,27 @@
-import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
+import { lazy } from 'react';
+import { useRoutes } from 'react-router-dom';
 
-import UserProvider from 'core/contexts/user/user.context';
-
-import SignInComponent from 'features/auth/components/sign-in/sign-in.component';
-import SignUpComponent from 'features/auth/components/sign-up/sign-up.component';
-import HomeComponent from 'features/home/pages/home.component';
-import RestaurantsComponent from 'features/restaurants/pages/restaurants.component';
-
-import MainAuthComponent from 'layouts/auth/main-auth/main-auth.component';
 import MainWebsiteComponent from 'layouts/website/main-website/main-website.component';
 
-function Routes() {
+import withSuspense from './with-suspense.component';
+
+const HomeComponent = withSuspense(
+  lazy(() => import('features/home/pages/home.component'))
+);
+const RestaurantsComponent = withSuspense(
+  lazy(() => import('features/restaurants/pages/restaurants.component'))
+);
+const MainAuthComponent = withSuspense(
+  lazy(() => import('layouts/auth/main-auth/main-auth.component'))
+);
+const SignInComponent = withSuspense(
+  lazy(() => import('features/auth/components/sign-in/sign-in.component'))
+);
+const SignUpComponent = withSuspense(
+  lazy(() => import('features/auth/components/sign-up/sign-up.component'))
+);
+
+export default function Routes() {
   const routes = useRoutes([
     {
       path: '/',
@@ -43,14 +54,4 @@ function Routes() {
   ]);
 
   return routes;
-}
-
-export default function AppRouterComponent(): JSX.Element {
-  return (
-    <Router>
-      <UserProvider>
-        <Routes />
-      </UserProvider>
-    </Router>
-  );
 }
