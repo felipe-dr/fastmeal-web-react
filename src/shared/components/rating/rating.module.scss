@@ -1,0 +1,13 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/functions';
+
+// -----------------------------------------------------------------------------
+// c-rating
+// -----------------------------------------------------------------------------
+.c-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-base-3;
+  font-weight: bold;
+}
