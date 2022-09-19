@@ -45,6 +45,7 @@ html {
 }
 
 body {
+  overflow-y: scroll;
   box-sizing: border-box;
   background-color: $color-secondary;
 }
@@ -66,4 +67,8 @@ a:link,
 a:visited {
   display: block;
   text-decoration: none;
+}
+
+cite {
+  font-style: normal;
 }
