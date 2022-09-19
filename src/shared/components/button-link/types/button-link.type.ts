@@ -12,6 +12,7 @@ type ButtonLinkBaseProps = ClassNameProps & {
   appearance?: ButtonLinkAppearance;
   color?: Colors;
   hoverColor?: Colors;
+  hoverTextColor?: Colors;
   mobileLabel?: string;
   children: ReactNode;
 };
