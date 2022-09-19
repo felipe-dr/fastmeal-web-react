@@ -4,4 +4,5 @@ export interface HeaderTitleProps {
   titleText: string;
   titleColor?: Colors;
   backgroundColor?: Colors;
+  hasBreadcrumb?: boolean;
 }
