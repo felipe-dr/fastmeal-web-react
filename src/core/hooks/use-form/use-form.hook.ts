@@ -2,7 +2,7 @@
 import { ChangeEvent, useState } from 'react';
 
 import formRegex from 'core/constants/regex.constant';
-import stringToBoolean from 'core/utils/conversions/conversions.util';
+import stringToBoolean from 'core/utils/conversions/variable-type.util';
 
 import { GetValidatorParams } from './interfaces/get-validator.interface';
 import { HandleClearParams } from './interfaces/handle-clear.interface';
