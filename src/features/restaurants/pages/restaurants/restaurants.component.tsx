@@ -7,9 +7,9 @@ import useFetch from 'core/hooks/use-fetch/use-fetch.hook';
 import ErrorsComponent from 'shared/components/errors/errors.component';
 import HeaderTitleComponent from 'shared/components/header-title/header-title.component';
 
-import RestaurantComponent from '../components/restaurant/restaurant.component';
-import { Restaurant } from '../interfaces/restaurant.interface';
-import RestaurantsService from '../services/restaurants/restaurants.service';
+import RestaurantComponent from '../../components/restaurant/restaurant.component';
+import { Restaurant } from '../../interfaces/restaurant.interface';
+import RestaurantsService from '../../services/restaurants/restaurants.service';
 import styles from './restaurants.module.scss';
 
 export default function RestaurantsComponent(): JSX.Element {
@@ -17,18 +17,18 @@ export default function RestaurantsComponent(): JSX.Element {
     useFetch<Restaurant[]>();
 
   function rendersRestaurantsOrFeedback() {
-    if (data) {
-      return data?.map((restaurant) => (
-        <RestaurantComponent key={restaurant.id} {...restaurant} />
-      ));
-    }
-
     if (isLoading) {
       return <p>Carregando...</p>;
     }
 
     if (errors.length > 0) {
       return <ErrorsComponent errorTitle={statusMessage} errors={errors} />;
+    }
+
+    if (data) {
+      return data?.map((restaurant) => (
+        <RestaurantComponent key={restaurant.id} {...restaurant} />
+      ));
     }
 
     return <p>Não há restaurantes disponíveis no momento.</p>;
@@ -42,12 +42,11 @@ export default function RestaurantsComponent(): JSX.Element {
 
   return (
     <section>
-      <HeaderTitleComponent titleText="Restaurantes" titleColor="base-3" />
+      <HeaderTitleComponent titleText="Restaurantes" />
       <div
         className={classNames({
           'grid-container': true,
           [styles['l-restaurants']]: true,
-          'u-gap-30': true,
         })}
       >
         {rendersRestaurantsOrFeedback()}
