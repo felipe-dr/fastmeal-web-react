@@ -1,12 +1,15 @@
 import classNames from 'classnames';
-import { RiStarFill, RiTimeLine } from 'react-icons/ri';
+import { RiTimeLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
+
+import RatingComponent from 'shared/components/rating/rating.component';
 
 import { Restaurant } from 'features/restaurants/interfaces/restaurant.interface';
 
 import styles from './restaurant.module.scss';
 
 export default function RestaurantComponent({
+  id,
   imagePath,
   name,
   category,
@@ -20,7 +23,7 @@ export default function RestaurantComponent({
         'u-display-flex': true,
         'u-shadow-small': true,
       })}
-      to="/"
+      to={`${id}/menu`}
     >
       <img
         className={styles['c-restaurant__img']}
@@ -35,10 +38,10 @@ export default function RestaurantComponent({
           {deliveryEstimate}
         </h4>
       </div>
-      <span className={styles['c-restaurant__rating']}>
-        <RiStarFill className="u-mr-5" />
-        {rating}
-      </span>
+      <RatingComponent
+        rating={rating}
+        styleClasses={styles['c-restaurant__rating']}
+      />
     </Link>
   );
 }
