@@ -1,0 +1,38 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/functions';
+@import 'styles/abstracts/mixins';
+
+// -----------------------------------------------------------------------------
+// c-restaurant-menu-item
+// -----------------------------------------------------------------------------
+.c-restaurant-menu-item {
+  display: grid;
+  justify-items: center;
+  padding: px-to-rem(20px);
+  background-color: $color-base-2;
+
+  @include media-breakpoint('sm') {
+    grid-template-columns: max-content 1fr;
+    justify-items: initial;
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-restaurant-menu-item__img
+  // ---------------------------------------------------------------------------
+  &__img {
+    max-height: px-to-rem(110px);
+
+    @include media-breakpoint('sm') {
+      grid-row: 1 / span 4;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-restaurant-menu-item__description
+  // ---------------------------------------------------------------------------
+  &__description {
+    max-width: px-to-rem(650px);
+    margin-top: px-to-rem(5px);
+    margin-bottom: px-to-rem(20px);
+  }
+}

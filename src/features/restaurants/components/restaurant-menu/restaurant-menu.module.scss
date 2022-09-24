@@ -1,0 +1,34 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/functions';
+@import 'styles/abstracts/mixins';
+
+// -----------------------------------------------------------------------------
+// l-restaurant-menu
+// -----------------------------------------------------------------------------
+.l-restaurant-menu {
+  display: grid;
+  gap: px-to-rem(30px);
+
+  @include media-breakpoint('md') {
+    grid-template-columns: 1fr max-content;
+  }
+
+  // ---------------------------------------------------------------------------
+  // l-restaurant-menu__item
+  // ---------------------------------------------------------------------------
+  &__item {
+    @include media-breakpoint('md') {
+      grid-column: 1;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // l-restaurant-menu__order-list
+  // ---------------------------------------------------------------------------
+  &__order-list {
+    @include media-breakpoint('md') {
+      grid-row: 1;
+      grid-column: 2;
+    }
+  }
+}
