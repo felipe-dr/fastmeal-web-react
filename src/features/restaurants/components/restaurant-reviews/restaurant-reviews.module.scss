@@ -1,0 +1,15 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/functions';
+@import 'styles/abstracts/mixins';
+
+// -----------------------------------------------------------------------------
+// l-restaurant-reviews
+// -----------------------------------------------------------------------------
+.l-restaurant-reviews {
+  display: grid;
+  gap: px-to-rem(30px);
+
+  @include media-breakpoint('md') {
+    grid-template-columns: repeat(2, 2fr);
+  }
+}
