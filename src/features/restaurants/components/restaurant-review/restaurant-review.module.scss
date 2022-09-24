@@ -1,0 +1,54 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/functions';
+
+// -----------------------------------------------------------------------------
+// c-restaurant-review
+// -----------------------------------------------------------------------------
+.c-restaurant-review {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: px-to-rem(15px);
+  padding-top: px-to-rem(20px);
+  background-color: $color-base-2;
+
+  // ---------------------------------------------------------------------------
+  // c-restaurant-review__img
+  // ---------------------------------------------------------------------------
+  &__img {
+    max-height: px-to-rem(50px);
+    margin-left: px-to-rem(20px);
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-restaurant-review__publication
+  // ---------------------------------------------------------------------------
+  &__publication {
+    padding: 0 px-to-rem(20px);
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-restaurant-review__date
+  // ---------------------------------------------------------------------------
+  &__date {
+    color: hexa-to-rgba($color-base-3, 0.5);
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-restaurant-review__rating
+  // ---------------------------------------------------------------------------
+  &__rating {
+    position: absolute;
+    top: px-to-rem(20px);
+    right: px-to-rem(20px);
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-restaurant-review__comments
+  // ---------------------------------------------------------------------------
+  &__comments {
+    width: 100%;
+    padding: px-to-rem(15px) px-to-rem(20px) px-to-rem(20px) px-to-rem(20px);
+    border-top: px-to-rem(1px) solid hexa-to-rgba($color-base-1, 0.5);
+  }
+}

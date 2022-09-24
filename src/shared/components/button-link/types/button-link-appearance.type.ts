@@ -1,1 +1,1 @@
-export type ButtonLinkAppearance = 'default' | 'round';
+export type ButtonLinkAppearance = 'default' | 'compact' | 'round';

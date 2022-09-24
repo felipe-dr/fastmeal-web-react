@@ -1,12 +1,14 @@
 import classNames from 'classnames';
 
+import BreadcrumbComponent from '../breadcrumb/breadcrumb.component';
 import styles from './header-title.module.scss';
 import { HeaderTitleProps } from './interfaces/header-title.interface';
 
 export default function HeaderTitleComponent({
   titleText,
-  titleColor,
+  titleColor = 'base-3',
   backgroundColor,
+  hasBreadcrumb = true,
 }: HeaderTitleProps): JSX.Element {
   return (
     <header
@@ -19,12 +21,12 @@ export default function HeaderTitleComponent({
       <h1
         className={classNames({
           t1: true,
-          [`u-text-${titleColor}`]: titleColor !== undefined,
-          'u-px-15': true,
+          [`u-text-${titleColor}`]: true,
         })}
       >
         {titleText}
       </h1>
+      {hasBreadcrumb && <BreadcrumbComponent />}
     </header>
   );
 }

@@ -3,10 +3,11 @@
 @import 'styles/abstracts/mixins';
 
 // -----------------------------------------------------------------------------
-// l-restaurants
+// l-restaurant-reviews
 // -----------------------------------------------------------------------------
-.l-restaurants {
+.l-restaurant-reviews {
   display: grid;
+  gap: px-to-rem(30px);
 
   @include media-breakpoint('md') {
     grid-template-columns: repeat(2, 2fr);

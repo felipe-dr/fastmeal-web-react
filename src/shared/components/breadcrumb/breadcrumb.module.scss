@@ -1,0 +1,28 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/functions';
+
+// -----------------------------------------------------------------------------
+// c-breadcrumb
+// -----------------------------------------------------------------------------
+.c-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: px-to-rem(20px);
+  text-transform: uppercase;
+
+  // ---------------------------------------------------------------------------
+  // c-breadcrumb__item
+  // ---------------------------------------------------------------------------
+  &__item {
+    // c-breadcrumb__item--separator
+    &--separator {
+      &::after {
+        content: '/';
+        padding: 0 px-to-rem(10px);
+        color: $color-base-3;
+        font-weight: bold;
+      }
+    }
+  }
+}

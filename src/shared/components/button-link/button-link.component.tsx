@@ -18,7 +18,8 @@ export default function ButtonLinkComponent(
     visualType: ButtonLinkVisualType | undefined,
     appearance: ButtonLinkAppearance | undefined,
     color: Colors | undefined,
-    hoverColor: Colors | undefined
+    hoverColor: Colors | undefined,
+    hoverTextColor: Colors | undefined
   ): string {
     return classNames({
       [styles[`c-${visualType}`]]: true,
@@ -26,6 +27,8 @@ export default function ButtonLinkComponent(
       [styles[`c-${visualType}--color-${color}`]]: color !== undefined,
       [styles[`c-${visualType}--hover-color-${hoverColor}`]]:
         hoverColor !== undefined,
+      [styles[`c-${visualType}--hover-text-color-${hoverTextColor}`]]:
+        hoverTextColor !== undefined,
       [`${props.styleClasses}`]: props.styleClasses !== undefined,
     });
   }
@@ -37,6 +40,7 @@ export default function ButtonLinkComponent(
       appearance,
       color,
       hoverColor,
+      hoverTextColor,
       mobileLabel,
       styleClasses,
       ...rest
@@ -44,7 +48,13 @@ export default function ButtonLinkComponent(
 
     return (
       <button
-        className={addStyleClasses(visualType, appearance, color, hoverColor)}
+        className={addStyleClasses(
+          visualType,
+          appearance,
+          color,
+          hoverColor,
+          hoverTextColor
+        )}
         {...rest}
       >
         {props.children}
@@ -62,6 +72,7 @@ export default function ButtonLinkComponent(
       appearance,
       color,
       hoverColor,
+      hoverTextColor,
       mobileLabel,
       styleClasses,
       ...rest
@@ -69,7 +80,13 @@ export default function ButtonLinkComponent(
 
     return (
       <Link
-        className={addStyleClasses(visualType, appearance, color, hoverColor)}
+        className={addStyleClasses(
+          visualType,
+          appearance,
+          color,
+          hoverColor,
+          hoverTextColor
+        )}
         {...rest}
       >
         {props.children}
@@ -87,6 +104,7 @@ export default function ButtonLinkComponent(
       appearance,
       color,
       hoverColor,
+      hoverTextColor,
       mobileLabel,
       styleClasses,
       ...rest
@@ -94,7 +112,13 @@ export default function ButtonLinkComponent(
 
     return (
       <a
-        className={addStyleClasses(visualType, appearance, color, hoverColor)}
+        className={addStyleClasses(
+          visualType,
+          appearance,
+          color,
+          hoverColor,
+          hoverTextColor
+        )}
         target="_blank"
         rel="noopener noreferrer"
         {...rest}

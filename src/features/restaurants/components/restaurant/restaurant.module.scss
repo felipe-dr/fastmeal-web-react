@@ -32,7 +32,7 @@
   // ---------------------------------------------------------------------------
   &__img {
     max-height: px-to-rem(120px);
-    margin: px-to-rem(20px) px-to-rem(10px);
+    margin: px-to-rem(20px);
   }
 
   // ---------------------------------------------------------------------------
@@ -42,9 +42,5 @@
     position: absolute;
     top: px-to-rem(20px);
     right: px-to-rem(20px);
-    display: flex;
-    align-items: center;
-    color: $color-base-3;
-    font-weight: bold;
   }
 }

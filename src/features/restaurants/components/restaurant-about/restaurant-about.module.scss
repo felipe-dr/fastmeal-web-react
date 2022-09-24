@@ -1,0 +1,68 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/functions';
+@import 'styles/abstracts/mixins';
+
+// -----------------------------------------------------------------------------
+// c-restaurant-about
+// -----------------------------------------------------------------------------
+.c-restaurant-about {
+  background-color: $color-base-2;
+
+
+  // ---------------------------------------------------------------------------
+  // c-restaurant-about__header
+  // ---------------------------------------------------------------------------
+  &__header {
+    padding: px-to-rem(20px);
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-restaurant-about__content
+  // ---------------------------------------------------------------------------
+  &__content {
+    flex-direction: column;
+    align-items: center;
+    padding: px-to-rem(20px);
+    border-top: px-to-rem(1px) solid hexa-to-rgba($color-base-1, 0.5);
+    border-bottom: px-to-rem(1px) solid hexa-to-rgba($color-base-1, 0.5);
+
+    @include media-breakpoint('sm') {
+      flex-direction: row;
+      column-gap: px-to-rem(20px);
+    }
+
+    // c-restaurant-about__content--max-width
+    &--max-width {
+      &-650 {
+        max-width: px-to-rem(650px);
+      }
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-restaurant-about__img
+  // ---------------------------------------------------------------------------
+  &__img {
+    max-height: px-to-rem(180px);
+    margin: px-to-rem(20px);
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-restaurant-about__link
+  // ---------------------------------------------------------------------------
+  &__link {
+    width: 100%;
+    padding: px-to-rem(15px);
+    border-bottom: px-to-rem(2px) solid transparent;
+    color: $color-base-3;
+    font-weight: 600;
+    text-align: center;
+    transition: $duration-0-3s;
+
+    // c-restaurant-about__link--active
+    &--active {
+      border-color: $color-primary;
+      color: $color-primary;
+    }
+  }
+}
