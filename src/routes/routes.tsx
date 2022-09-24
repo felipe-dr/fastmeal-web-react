@@ -9,7 +9,33 @@ const HomeComponent = withSuspense(
   lazy(() => import('features/home/pages/home.component'))
 );
 const RestaurantsComponent = withSuspense(
-  lazy(() => import('features/restaurants/pages/restaurants.component'))
+  lazy(
+    () => import('features/restaurants/pages/restaurants/restaurants.component')
+  )
+);
+const RestaurantDetailsComponent = withSuspense(
+  lazy(
+    () =>
+      import(
+        'features/restaurants/pages/restaurant-details/restaurant-details.component'
+      )
+  )
+);
+const RestaurantMenuComponent = withSuspense(
+  lazy(
+    () =>
+      import(
+        'features/restaurants/components/restaurant-menu/restaurant-menu.component'
+      )
+  )
+);
+const RestaurantReviewsComponent = withSuspense(
+  lazy(
+    () =>
+      import(
+        'features/restaurants/components/restaurant-reviews/restaurant-reviews.component'
+      )
+  )
 );
 const MainAuthComponent = withSuspense(
   lazy(() => import('layouts/auth/main-auth/main-auth.component'))
@@ -19,6 +45,9 @@ const SignInComponent = withSuspense(
 );
 const SignUpComponent = withSuspense(
   lazy(() => import('features/auth/components/sign-up/sign-up.component'))
+);
+const NotFoundComponent = withSuspense(
+  lazy(() => import('shared/components/not-found/not-found.component'))
 );
 
 export default function Routes() {
@@ -32,13 +61,27 @@ export default function Routes() {
           element: <HomeComponent />,
         },
         {
-          path: '/restaurants',
+          path: 'restaurants',
           element: <RestaurantsComponent />,
+        },
+        {
+          path: 'restaurants/:id',
+          element: <RestaurantDetailsComponent />,
+          children: [
+            {
+              path: 'menu',
+              element: <RestaurantMenuComponent />,
+            },
+            {
+              path: 'reviews',
+              element: <RestaurantReviewsComponent />,
+            },
+          ],
         },
       ],
     },
     {
-      path: '/auth',
+      path: 'auth',
       element: <MainAuthComponent />,
       children: [
         {
@@ -50,6 +93,10 @@ export default function Routes() {
           element: <SignUpComponent />,
         },
       ],
+    },
+    {
+      path: '*',
+      element: <NotFoundComponent />,
     },
   ]);
 
