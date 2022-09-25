@@ -48,13 +48,12 @@ export default function NavbarComponent(): JSX.Element {
       return (
         <>
           <ButtonLinkComponent
-            elementType="link"
+            elementType="button"
             visualType="button"
             appearance="round"
             color="transparent"
-            hoverColor="primary"
-            styleClasses="u-display-flex u-border-width-1"
-            to=""
+            styleClasses="u-display-flex u-border-width-1 u-cursor-initial"
+            type="button"
           >
             <RiUserLine className="u-flex-shrink-0" size={20} />
           </ButtonLinkComponent>
