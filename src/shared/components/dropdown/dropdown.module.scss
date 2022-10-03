@@ -14,22 +14,42 @@
   &__list {
     position: absolute;
     right: 0;
+    width: max-content;
     min-width: px-to-rem(180px);
-    padding: px-to-rem(10px) px-to-rem(15px);
-    border: px-to-rem(1px) solid hexa-to-rgba($color-base-1);
+    border: px-to-rem(1px) solid $color-base-1;
     border-top-width: px-to-rem(2px);
     border-top-color: $color-primary;
     border-radius: px-to-rem(5px);
     background-color: $color-base-2;
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
     transition: $duration-0-2s;
 
     // c-dropdown__list--active
     &--active {
       opacity: 1;
       visibility: visible;
+      pointer-events: all;
     }
+
+    // c-dropdown__list--padding
+    &--padding {
+      padding: 0 px-to-rem(20px);
+    }
+
+    // c-dropdown__list--max-height
+    &--max-height {
+      overflow-y: auto;
+      max-height: px-to-rem(300px);
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-dropdown__item
+  // ---------------------------------------------------------------------------
+  &__item {
+    padding: px-to-rem(12px) 0;
   }
 
   // ---------------------------------------------------------------------------
@@ -45,7 +65,6 @@
   &__link,
   &__text {
     width: 100%;
-    padding: px-to-rem(5px) px-to-rem(10px);
     color: inherit;
     text-align: left;
   }
