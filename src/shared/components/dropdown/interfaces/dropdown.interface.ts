@@ -23,6 +23,9 @@ export interface DropdownProps {
   buttonLabel?: string;
   buttonIcon?: ReactNode;
   buttonStyleClasses?: string;
+  listDefaultPadding?: boolean;
+  listMaxHeight?: boolean;
   listItems?: DropdownItem[];
   customItemsElements?: ReactNode;
+  children?: ReactNode;
 }

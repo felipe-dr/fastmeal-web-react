@@ -20,8 +20,11 @@ export default function DropdownComponent({
   buttonLabel,
   buttonIcon,
   buttonStyleClasses,
+  listDefaultPadding = true,
+  listMaxHeight,
   listItems,
   customItemsElements,
+  children,
 }: DropdownProps): JSX.Element {
   const dropdownContainerRef = useRef<HTMLDivElement>(null);
   const { isActiveElement, showElement, hiddenElement } = useOutsideEvent({
@@ -106,6 +109,38 @@ export default function DropdownComponent({
     }
   }
 
+  function buildList(): JSX.Element {
+    return (
+      <ul
+        className={classNames({
+          [dropdownStyles['c-dropdown__list']]: !children && true,
+          [dropdownStyles['c-dropdown__list--active']]:
+            !children && isActiveElement,
+          [dropdownStyles['c-dropdown__list--padding']]: listDefaultPadding,
+          [dropdownStyles['c-dropdown__list--max-height']]: listMaxHeight,
+          'u-shadow-small': !children && true,
+        })}
+      >
+        {customItemsElements ||
+          listItems?.map((item) => (
+            <li
+              className={classNames({
+                [dropdownStyles['c-dropdown__item']]: true,
+                [dropdownStyles['c-dropdown__divider']]: item.hasDivider,
+                [dropdownStyles['c-dropdown__link--disabled']]: !item.isActive,
+                'u-display-flex': item.icon,
+                'u-flex-align-items-center': item.icon,
+              })}
+              key={item.id}
+            >
+              {item.icon && item.icon}
+              {buildDefaultListItems(item)}
+            </li>
+          ))}
+      </ul>
+    );
+  }
+
   return (
     <div className={dropdownStyles['c-dropdown']} ref={dropdownContainerRef}>
       <ButtonLinkComponent
@@ -125,29 +160,20 @@ export default function DropdownComponent({
         {buttonIcon && buttonIcon}
         {buttonLabel && buttonLabel}
       </ButtonLinkComponent>
-      <ul
-        className={classNames({
-          [dropdownStyles['c-dropdown__list']]: true,
-          [dropdownStyles['c-dropdown__list--active']]: isActiveElement,
-          'u-shadow-small': true,
-        })}
-      >
-        {customItemsElements ||
-          listItems?.map((item) => (
-            <li
-              className={classNames({
-                [dropdownStyles['c-dropdown__divider']]: item.hasDivider,
-                [dropdownStyles['c-dropdown__link--disabled']]: !item.isActive,
-                'u-display-flex': item.icon,
-                'u-flex-align-items-center': item.icon,
-              })}
-              key={item.id}
-            >
-              {item.icon && item.icon}
-              {buildDefaultListItems(item)}
-            </li>
-          ))}
-      </ul>
+      {children ? (
+        <div
+          className={classNames({
+            [dropdownStyles['c-dropdown__list']]: true,
+            [dropdownStyles['c-dropdown__list--active']]: isActiveElement,
+            'u-shadow-small': true,
+          })}
+        >
+          {buildList()}
+          {children}
+        </div>
+      ) : (
+        buildList()
+      )}
     </div>
   );
 }

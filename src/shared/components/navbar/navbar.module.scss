@@ -25,11 +25,13 @@
     height: calc(100vh - px-to-rem(84px));
     border-top: px-to-rem(1px) solid hexa-to-rgba($color-base-1, 0.25);
     background-color: $color-base-2;
+    pointer-events: none;
     transition: max-width $duration-0-6s ease;
 
     // c-navbar__mobile--active
     &--active {
       max-width: 100%;
+      pointer-events: all;
     }
   }
 
