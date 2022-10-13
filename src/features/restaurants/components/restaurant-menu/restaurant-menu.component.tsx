@@ -10,6 +10,7 @@ import { RestaurantMenuItem } from 'features/restaurants/interfaces/restaurant-m
 import RestaurantsService from 'features/restaurants/services/restaurants/restaurants.service';
 
 import RestaurantMenuItemComponent from '../restaurant-menu-item/restaurant-menu-item.component';
+import RestaurantOrderListComponent from '../restaurant-order-list/restaurant-order-list.component';
 import styles from './restaurant-menu.module.scss';
 
 export default function RestaurantMenuComponent(): JSX.Element {
@@ -32,22 +33,20 @@ export default function RestaurantMenuComponent(): JSX.Element {
     return <ErrorsComponent errorTitle={statusMessage} errors={errors} />;
   }
 
-  if (data?.length === 0) {
-    return <p>Não há itens do cardápio disponíveis no momento.</p>;
-  }
-
   return (
     <div className={styles['l-restaurant-menu']}>
-      {data?.map((restaurantMenuItem) => (
-        <RestaurantMenuItemComponent
-          styleClasses={styles['l-restaurant-menu__item']}
-          key={restaurantMenuItem.id}
-          {...restaurantMenuItem}
-        />
-      ))}
-      <div className={styles['l-restaurant-menu__order-list']}>
-        ------------------------- Order list -------------------------
-      </div>
+      {data?.length === 0 ? (
+        <p>Não há itens do cardápio disponíveis no momento.</p>
+      ) : (
+        data?.map((restaurantMenuItem) => (
+          <RestaurantMenuItemComponent
+            styleClasses={styles['l-restaurant-menu__item']}
+            key={restaurantMenuItem.id}
+            {...restaurantMenuItem}
+          />
+        ))
+      )}
+      <RestaurantOrderListComponent />
     </div>
   );
 }
