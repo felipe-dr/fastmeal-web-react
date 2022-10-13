@@ -72,3 +72,31 @@ a:visited {
 cite {
   font-style: normal;
 }
+
+table {
+  border-collapse: collapse;
+  font-size: px-to-rem(15px);
+  word-break: normal;
+}
+
+table > :not(caption) > * > * {
+  padding: px-to-rem(12);
+  border-bottom-width: px-to-rem(1px);
+  text-align: left;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  background-color: $color-base-2;
+  color: $color-base-3;
+  box-shadow: px-to-rem(0) px-to-rem(1px) 0 $color-base-1;
+}
+
+tr,
+th,
+td {
+  border-width: 0;
+  border-style: solid;
+  border-color: hexa-to-rgba($color-base-1, 0.35);
+}
