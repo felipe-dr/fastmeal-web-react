@@ -1,25 +1,16 @@
 @import 'styles/abstracts/variables';
-@import 'styles/abstracts/functions';
-@import 'styles/abstracts/mixins';
 
 // -----------------------------------------------------------------------------
-// l-restaurant-menu
+// c-order-list
 // -----------------------------------------------------------------------------
-.l-restaurant-menu {
-  display: grid;
-  gap: px-to-rem(30px);
-
-  @include media-breakpoint('md') {
-    grid-template-columns: 2fr 1fr;
-    align-items: flex-start;
-  }
+.c-order-list {
+  width: 100%;
 
   // ---------------------------------------------------------------------------
-  // l-restaurant-menu__item
+  // c-order-list__img
   // ---------------------------------------------------------------------------
-  &__item {
-    @include media-breakpoint('md') {
-      grid-column: 1;
-    }
+  &__img {
+    // width(50px) + padding(12px) x 2
+    min-width: px-to-rem(74px);
   }
 }

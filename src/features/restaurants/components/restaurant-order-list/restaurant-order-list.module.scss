@@ -1,0 +1,52 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/functions';
+@import 'styles/abstracts/mixins';
+
+// -----------------------------------------------------------------------------
+// c-restaurant-order-list
+// -----------------------------------------------------------------------------
+.c-restaurant-order-list {
+  display: inherit;
+  border-radius: px-to-rem(5px);
+  background-color: $color-base-2;
+
+  @include media-breakpoint('md') {
+    grid-row: 1 / span 4;
+    grid-column: 2;
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-restaurant-order-list__title
+  // ---------------------------------------------------------------------------
+  &__title {
+    border-bottom: px-to-rem(1px) solid hexa-to-rgba($color-base-1, 0.5);
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-restaurant-order-list__container
+  // ---------------------------------------------------------------------------
+  &__container {
+    overflow: auto;
+    max-height: px-to-rem(348px);
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-restaurant-order-list__subtotal
+  // ---------------------------------------------------------------------------
+  &__subtotal {
+    width: 100%;
+    color: $color-base-3;
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-restaurant-order-list__actions
+  // ---------------------------------------------------------------------------
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: px-to-rem(10px);
+    justify-content: center;
+    padding: px-to-rem(12px) px-to-rem(20px) px-to-rem(20px) px-to-rem(20px);
+    font-size: px-to-rem(15px);
+  }
+}

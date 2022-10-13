@@ -83,6 +83,17 @@
 
   // c-button--color
   &--color {
+    // c-button--color-base-1
+    &-base-1 {
+      background-color: $color-base-1;
+      color: $color-base-3;
+
+      // c-button--color-base-1:disabled
+      &:disabled {
+        background-color: hexa-to-rgba($color-base-1, 0.4);
+      }
+    }
+
     // c-button--color-base-3
     &-base-3 {
       background-color: $color-base-3;
