@@ -10,7 +10,8 @@
   gap: px-to-rem(30px);
 
   @include media-breakpoint('md') {
-    grid-template-columns: 1fr max-content;
+    grid-template-columns: 2fr 1fr;
+    align-items: flex-start;
   }
 
   // ---------------------------------------------------------------------------
@@ -19,16 +20,6 @@
   &__item {
     @include media-breakpoint('md') {
       grid-column: 1;
-    }
-  }
-
-  // ---------------------------------------------------------------------------
-  // l-restaurant-menu__order-list
-  // ---------------------------------------------------------------------------
-  &__order-list {
-    @include media-breakpoint('md') {
-      grid-row: 1;
-      grid-column: 2;
     }
   }
 }
