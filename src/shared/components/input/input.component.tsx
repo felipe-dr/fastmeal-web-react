@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import classNames from 'classnames';
 
 import styles from './input.module.scss';
@@ -13,6 +14,7 @@ export default function InputComponent({
   onBlur,
   children,
   error,
+  ...rest
 }: InputProps): JSX.Element {
   return (
     <div>
@@ -36,6 +38,7 @@ export default function InputComponent({
           placeholder={placeholder}
           onChange={onChange}
           onBlur={onBlur}
+          {...rest}
         />
         {children && (
           <span className={styles['c-input__icon']}>{children}</span>
