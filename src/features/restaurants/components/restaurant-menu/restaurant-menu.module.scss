@@ -9,7 +9,7 @@
   display: grid;
   gap: px-to-rem(30px);
 
-  @include media-breakpoint('md') {
+  @include media-breakpoint('lg') {
     grid-template-columns: 2fr 1fr;
     align-items: flex-start;
   }
@@ -18,7 +18,7 @@
   // l-restaurant-menu__item
   // ---------------------------------------------------------------------------
   &__item {
-    @include media-breakpoint('md') {
+    @include media-breakpoint('lg') {
       grid-column: 1;
     }
   }
