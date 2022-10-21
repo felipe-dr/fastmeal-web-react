@@ -37,6 +37,11 @@ const RestaurantReviewsComponent = withSuspense(
       )
   )
 );
+const OrderCheckoutComponent = withSuspense(
+  lazy(
+    () => import('features/order/pages/order-checkout/order-checkout.component')
+  )
+);
 const MainAuthComponent = withSuspense(
   lazy(() => import('layouts/auth/main-auth/main-auth.component'))
 );
@@ -75,6 +80,15 @@ export default function Routes() {
             {
               path: 'reviews',
               element: <RestaurantReviewsComponent />,
+            },
+          ],
+        },
+        {
+          path: 'order',
+          children: [
+            {
+              path: 'checkout',
+              element: <OrderCheckoutComponent />,
             },
           ],
         },
