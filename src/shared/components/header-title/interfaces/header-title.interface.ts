@@ -5,4 +5,5 @@ export interface HeaderTitleProps {
   titleColor?: Colors;
   backgroundColor?: Colors;
   hasBreadcrumb?: boolean;
+  disableRoute?: string;
 }

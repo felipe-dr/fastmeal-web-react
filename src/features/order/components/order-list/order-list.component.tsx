@@ -15,6 +15,7 @@ export default function OrderListComponent({
   showDescription = true,
   showQuantity = true,
   showPrice = true,
+  showSubtotal = true,
 }: OrderListProps): JSX.Element {
   return (
     <table className={styles['c-order-list']}>
@@ -33,12 +34,13 @@ export default function OrderListComponent({
             </th>
           )}
           {showPrice && <th scope="col">Preço</th>}
+          {showSubtotal && <th scope="col">Subtotal</th>}
           <th scope="col">&nbsp;</th>
         </tr>
       </thead>
       <tbody>
         {orderItems.map(
-          ({ id, imagePath, name, description, quantity, price }) => (
+          ({ id, imagePath, name, description, quantity, price, subtotal }) => (
             <tr key={id}>
               {showImage && (
                 <td>
@@ -77,6 +79,7 @@ export default function OrderListComponent({
                 </td>
               )}
               {showPrice && <td>{toBRL(price)}</td>}
+              {showSubtotal && <td>{toBRL(subtotal)}</td>}
               <td>
                 <ButtonLinkComponent
                   elementType="button"

@@ -5,7 +5,9 @@ import { useNavigate } from 'react-router-dom';
 
 import { useUserContext } from 'core/contexts/user/user.context';
 import useFetch from 'core/hooks/use-fetch/use-fetch.hook';
-import useForm, { handleSubmit } from 'core/hooks/use-form/use-form.hook';
+import useFormInput, {
+  handleSubmit,
+} from 'core/hooks/use-form-input/use-form-input.hook';
 
 import ButtonLinkComponent from 'shared/components/button-link/button-link.component';
 import ErrorsComponent from 'shared/components/errors/errors.component';
@@ -20,11 +22,11 @@ export default function SignInComponent(): JSX.Element {
   const navigate = useNavigate();
 
   const formFields = {
-    email: useForm({
+    email: useFormInput({
       validators: [{ required: true }, { email: true }],
       fieldName: 'E-mail',
     }),
-    password: useForm({
+    password: useFormInput({
       validators: [{ required: true }, { minlength: 4 }],
       fieldName: 'Senha',
     }),

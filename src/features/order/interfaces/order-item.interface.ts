@@ -6,6 +6,7 @@ export interface OrderItem {
   description: string;
   quantity: number;
   price: number;
+  subtotal: number;
   imagePath: string;
 }
 
@@ -17,6 +18,7 @@ export const orderItems: OrderItem[] = [
     description: 'Pão artesanal com queijos italianos',
     quantity: 1,
     price: 15.9,
+    subtotal: 15.9,
     imagePath: temp,
   },
   {
@@ -25,6 +27,16 @@ export const orderItems: OrderItem[] = [
     description: 'Coberto com chantilly',
     quantity: 4,
     price: 2.5,
+    subtotal: 10.2,
+    imagePath: temp,
+  },
+  {
+    id: 3,
+    name: 'Donut',
+    description: 'Coberto com chantilly',
+    quantity: 4,
+    price: 2.5,
+    subtotal: 10.2,
     imagePath: temp,
   },
 ];

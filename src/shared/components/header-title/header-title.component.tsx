@@ -9,6 +9,7 @@ export default function HeaderTitleComponent({
   titleColor = 'base-3',
   backgroundColor,
   hasBreadcrumb = true,
+  disableRoute,
 }: HeaderTitleProps): JSX.Element {
   return (
     <header
@@ -26,7 +27,7 @@ export default function HeaderTitleComponent({
       >
         {titleText}
       </h1>
-      {hasBreadcrumb && <BreadcrumbComponent />}
+      {hasBreadcrumb && <BreadcrumbComponent disableRoute={disableRoute} />}
     </header>
   );
 }

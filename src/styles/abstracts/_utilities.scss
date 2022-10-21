@@ -70,6 +70,10 @@ $utility-prefix: 'u';
       @include generate-properties($order, 'order', $break-name);
     }
 
+    .#{$utility-prefix}-justify-self {
+      @include generate-properties($justify-self, 'justify-self', $break-name);
+    }
+
     .#{$utility-prefix}-position {
       @include generate-properties($positions, 'position', $break-name);
     }

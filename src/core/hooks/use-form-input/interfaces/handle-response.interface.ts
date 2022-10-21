@@ -1,10 +1,10 @@
 import { HttpResponse } from 'shared/interfaces/http-response.interface';
 
-import { UseFormReturn } from './use-form.interface';
+import { UseFormInputReturn } from './use-form-input.interface';
 
 export interface HandleResponseParams<T> {
   response: HttpResponse<T>;
-  formFields: { [key: string]: UseFormReturn };
+  formFields: { [key: string]: UseFormInputReturn };
   customSuccessMessage?: string;
   customErrorMessage?: string;
 }

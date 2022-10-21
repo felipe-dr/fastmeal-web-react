@@ -100,3 +100,15 @@ td {
   border-style: solid;
   border-color: hexa-to-rgba($color-base-1, 0.35);
 }
+
+th {
+  color: $color-base-3;
+}
+
+fieldset {
+  border: 0;
+}
+
+legend {
+  width: 100%;
+}

@@ -1,4 +1,5 @@
 @import 'styles/abstracts/variables';
+@import 'styles/abstracts/functions';
 
 // -----------------------------------------------------------------------------
 // c-order-list
@@ -7,9 +8,32 @@
   width: 100%;
 
   // ---------------------------------------------------------------------------
+  // c-order-list__container
+  // ---------------------------------------------------------------------------
+  &__container {
+    overflow: auto;
+
+    &--max-height {
+      &-small {
+        max-height: px-to-rem(304px);
+      }
+
+      &-medium {
+        max-height: px-to-rem(404px);
+      }
+    }
+
+    // c-order-list__container--min-inline-initial
+    &--min-inline-initial {
+      min-inline-size: initial;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
   // c-order-list__img
   // ---------------------------------------------------------------------------
   &__img {
+    width: px-to-rem(74px);
     // width(50px) + padding(12px) x 2
     min-width: px-to-rem(74px);
   }

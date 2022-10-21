@@ -102,6 +102,7 @@ export default function NavbarComponent(): JSX.Element {
                 mobileLabel="Pedidos"
                 styleClasses="u-display-flex u-border-width-1"
                 to="order/checkout"
+                onClick={closeNavbar}
               >
                 <RiShoppingBasketLine className="u-flex-shrink-0" size={20} />
               </ButtonLinkComponent>

@@ -1,0 +1,88 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/functions';
+
+// -----------------------------------------------------------------------------
+// c-radio-button
+// -----------------------------------------------------------------------------
+.c-radio-button {
+  // ---------------------------------------------------------------------------
+  // c-radio-button__label
+  // ---------------------------------------------------------------------------
+  &__label {
+    display: flex;
+    gap: px-to-rem(5px);
+    align-items: center;
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-radio-button__field
+  // ---------------------------------------------------------------------------
+  &__field {
+    width: px-to-rem(20px);
+    height: px-to-rem(20px);
+    margin: 0;
+    border: px-to-rem(2px) solid $color-base-3;
+    border-radius: 50%;
+    appearance: none;
+
+    &::after {
+      content: '';
+      display: block;
+      width: px-to-rem(10px);
+      height: px-to-rem(10px);
+      margin: px-to-rem(3px);
+      border-radius: 50%;
+    }
+
+    &:hover:not([disabled]) {
+      &::after {
+        background-color: hexa-to-rgba($color-base-3, 0.6);
+      }
+    }
+
+    &:focus {
+      outline: px-to-rem(2px) solid $color-primary;
+    }
+
+    &:checked:not([disabled]) {
+      &::after {
+        background-color: $color-base-3;
+      }
+
+      &:hover {
+        border: px-to-rem(2px) solid $color-base-3;
+        background-color: $color-base-2;
+
+        &::after {
+          background-color: $color-base-3;
+        }
+      }
+    }
+
+    &:disabled {
+      border: 2px solid hexa-to-rgba($color-base-3, 0.3);
+      background-color: $color-base-1;
+      cursor: not-allowed;
+
+      :hover {
+        ::after {
+          background-color: $color-base-1;
+        }
+      }
+
+      &:checked {
+        &::after {
+          background-color: hexa-to-rgba($color-base-3, 0.3);
+        }
+
+        &:hover {
+          background-color: $color-base-1;
+
+          &::after {
+            background-color: hexa-to-rgba($color-base-3, 0.3);
+          }
+        }
+      }
+    }
+  }
+}

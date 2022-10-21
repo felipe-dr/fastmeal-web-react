@@ -1,6 +1,6 @@
 import { ValidatorsKeyof } from '../types/validators.type';
 
-export interface UseFormProps {
+export interface UseFormInputProps {
   validators?: {
     [key in ValidatorsKeyof]?: string | number | boolean;
   }[];
@@ -8,7 +8,7 @@ export interface UseFormProps {
   customMessage?: string;
 }
 
-export interface UseFormReturn {
+export interface UseFormInputReturn {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
   error: string;

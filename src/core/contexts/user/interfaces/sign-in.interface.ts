@@ -1,4 +1,4 @@
-import { UseFormReturn } from 'core/hooks/use-form/interfaces/use-form.interface';
+import { UseFormInputReturn } from 'core/hooks/use-form-input/interfaces/use-form-input.interface';
 
 import { ServiceRequest } from 'shared/types/service-request.type';
 
@@ -9,5 +9,5 @@ export interface SignInParams {
   formFieldsObject: {
     [key: string]: string;
   };
-  formFields: { [key: string]: UseFormReturn };
+  formFields: { [key: string]: UseFormInputReturn };
 }
