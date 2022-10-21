@@ -6,6 +6,10 @@ export default function translateTermsToPtBr(text: string): string {
       return 'cardápio';
     case 'reviews':
       return 'avaliações';
+    case 'order':
+      return 'pedido';
+    case 'checkout':
+      return 'finalização';
     default:
       return text;
   }
