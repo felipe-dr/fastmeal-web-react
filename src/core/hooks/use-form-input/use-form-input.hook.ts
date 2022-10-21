@@ -7,7 +7,10 @@ import stringToBoolean from 'core/utils/conversions/variable-type.util';
 import { GetValidatorParams } from './interfaces/get-validator.interface';
 import { HandleClearParams } from './interfaces/handle-clear.interface';
 import { HandleResponseParams } from './interfaces/handle-response.interface';
-import { UseFormProps, UseFormReturn } from './interfaces/use-form.interface';
+import {
+  UseFormInputProps,
+  UseFormInputReturn,
+} from './interfaces/use-form-input.interface';
 import {
   HandleSubmitParams,
   HandleSubmitReturn,
@@ -18,17 +21,17 @@ import { ValidatorsKeyof } from './types/validators.type';
  * Hook that receives a list with validation types and field name, in order to
  * validate it and return the state of this validation.
  *
- * @typedef {object} UseFormProps
+ * @typedef {object} UseFormInputProps
  * @property {object[]} [validators]
  * @property {string} [fieldName=Campo]
  * @property {string} [customMessage]
- * @returns {UseFormReturn}
+ * @returns {UseFormInputReturn}
  */
-export default function useForm({
+export default function useFormInput({
   validators,
   fieldName = 'Campo',
   customMessage,
-}: UseFormProps): UseFormReturn {
+}: UseFormInputProps): UseFormInputReturn {
   const [value, setValue] = useState<string>('');
   const [error, setError] = useState<string>('');
 
