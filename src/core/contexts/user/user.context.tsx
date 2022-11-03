@@ -1,8 +1,8 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 import localStorage from 'core/constants/local-storage.constant';
-import { handleResponse } from 'core/hooks/use-form-input/use-form-input.hook';
 import AuthService from 'core/services/auth/auth.service';
+import handleResponse from 'core/utils/forms/triggers/handle-response/handle-response.util';
 import {
   getItemLocalStorage,
   removeItemsLocalStorage,
