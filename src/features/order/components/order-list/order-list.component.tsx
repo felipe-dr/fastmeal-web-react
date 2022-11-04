@@ -17,7 +17,7 @@ export default function OrderListComponent({
   showPrice = true,
   showSubtotal = true,
 }: OrderListProps): JSX.Element {
-  return (
+  return orderItems.length > 0 ? (
     <table className={styles['c-order-list']}>
       <thead>
         <tr>
@@ -98,5 +98,19 @@ export default function OrderListComponent({
         )}
       </tbody>
     </table>
+  ) : (
+    <p className="u-display-flex u-flex-wrap u-gap-5">
+      Nenhum item adicionado.
+      <ButtonLinkComponent
+        elementType="link"
+        visualType="link"
+        appearance="default"
+        color="base-3"
+        hoverColor="primary"
+        to="/restaurants"
+      >
+        Buscar restaurantes
+      </ButtonLinkComponent>
+    </p>
   );
 }
