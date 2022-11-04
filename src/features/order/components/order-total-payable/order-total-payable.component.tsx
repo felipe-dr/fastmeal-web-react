@@ -34,13 +34,13 @@ export default function OrderTotalPayableComponent(): JSX.Element {
         </tbody>
       </table>
       <ButtonLinkComponent
-        elementType="link"
+        elementType="button"
         visualType="button"
         appearance="default"
         color="base-3"
         hoverColor="primary"
-        to=""
         styleClasses="u-display-flex u-flex-align-items-center u-flex-justify-content-center u-justify-self-sm-end"
+        type="submit"
       >
         <RiBankCard2Line className="u-flex-shrink-0 u-mr-5" />
         Fechar pedido
