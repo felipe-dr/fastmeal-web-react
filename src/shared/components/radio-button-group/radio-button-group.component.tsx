@@ -5,6 +5,7 @@ import { RadioButtonOption } from './interfaces/radio-button-option.interface';
 export default function RadioButtonGroupComponent({
   options,
   selectedValue,
+  error,
   onChange,
 }: RadioButtonGroupProps): JSX.Element {
   function buildRadioGroupOptions() {
@@ -26,5 +27,10 @@ export default function RadioButtonGroupComponent({
     });
   }
 
-  return <>{buildRadioGroupOptions()}</>;
+  return (
+    <>
+      {buildRadioGroupOptions()}
+      {error && <p className="s2 u-text-danger">{error}</p>}
+    </>
+  );
 }
