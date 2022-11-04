@@ -1,8 +1,13 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import classNames from 'classnames';
 
 import InputComponent from 'shared/components/input/input.component';
 
-export default function OrderPersonalFormComponent(): JSX.Element {
+import { OrderFormFieldsProps } from 'features/order/interfaces/order-form-fields.interface';
+
+export default function OrderPersonalFormComponent({
+  formFields,
+}: OrderFormFieldsProps): JSX.Element {
   return (
     <>
       <legend
@@ -15,14 +20,24 @@ export default function OrderPersonalFormComponent(): JSX.Element {
         Dados pessoais
       </legend>
       <InputComponent
+        name="cpf"
+        type="text"
+        placeholder="CPF"
+        autoFocus
+        {...formFields.cpf}
+      />
+      <InputComponent
         name="name"
         type="text"
         placeholder="Nome completo"
-        autoFocus
+        {...formFields.fullName}
       />
-      <InputComponent name="cpf" type="text" placeholder="CPF" />
-      <InputComponent name="email" type="text" placeholder="E-mail" />
-      <InputComponent name="phone" type="text" placeholder="Telefone" />
+      <InputComponent
+        name="phone"
+        type="text"
+        placeholder="Telefone"
+        {...formFields.phone}
+      />
     </>
   );
 }
