@@ -1,10 +1,12 @@
 import classNames from 'classnames';
 
-import useFormRadio from 'core/hooks/use-form-radio/use-form-radio.hook';
-
 import RadioButtonGroupComponent from 'shared/components/radio-button-group/radio-button-group.component';
 
-export default function OrderPaymentFormComponent(): JSX.Element {
+import { OrderPaymentFormProps } from 'features/order/interfaces/order-payment-form.interface';
+
+export default function OrderPaymentFormComponent({
+  paymentMethodRadio,
+}: OrderPaymentFormProps): JSX.Element {
   const paymentMethods = [
     {
       id: 'money',
@@ -23,8 +25,6 @@ export default function OrderPaymentFormComponent(): JSX.Element {
     },
   ];
 
-  const { selectedValue, onChange } = useFormRadio({});
-
   return (
     <>
       <legend
@@ -38,8 +38,9 @@ export default function OrderPaymentFormComponent(): JSX.Element {
       </legend>
       <RadioButtonGroupComponent
         options={paymentMethods}
-        selectedValue={selectedValue}
-        onChange={onChange}
+        selectedValue={paymentMethodRadio.selectedValue}
+        error={paymentMethodRadio.error}
+        onChange={paymentMethodRadio.onChange}
       />
     </>
   );

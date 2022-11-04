@@ -7,6 +7,7 @@
 // -----------------------------------------------------------------------------
 .c-restaurant-order-list {
   display: inherit;
+  padding: px-to-rem(20px) 0;
   border-radius: px-to-rem(5px);
   background-color: $color-base-2;
 
@@ -37,7 +38,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: px-to-rem(10px);
-    padding: px-to-rem(12px) px-to-rem(20px) px-to-rem(20px) px-to-rem(20px);
+    padding: px-to-rem(12px) px-to-rem(20px) 0 px-to-rem(20px);
     font-size: px-to-rem(15px);
   }
 }

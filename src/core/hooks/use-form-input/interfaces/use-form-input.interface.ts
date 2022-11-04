@@ -6,13 +6,14 @@ export interface UseFormInputProps {
   }[];
   fieldName?: string;
   customMessage?: string;
+  mask?: 'cpf' | 'phone' | 'cep';
 }
 
 export interface UseFormInputReturn {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
   error: string;
-  onChange: ({ target }: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: React.FormEvent<HTMLInputElement>) => void;
   validate: () => boolean;
   onBlur: () => void;
 }

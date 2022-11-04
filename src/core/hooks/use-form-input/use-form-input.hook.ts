@@ -1,36 +1,36 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-import { ChangeEvent, useState } from 'react';
+import { FormEvent, useState } from 'react';
 
-import formRegex from 'core/constants/regex.constant';
+import formValidationsRegex from 'core/constants/regex.constant';
 import stringToBoolean from 'core/utils/conversions/variable-type.util';
+import cepMask from 'core/utils/forms/masks/cep-mask.util';
+import cpfMask from 'core/utils/forms/masks/cpf-mask.util';
+import phoneMask from 'core/utils/forms/masks/phone-mask.util';
+import isValidCPF from 'core/utils/forms/validations/cpf-validation.util';
 
 import { GetValidatorParams } from './interfaces/get-validator.interface';
-import { HandleClearParams } from './interfaces/handle-clear.interface';
-import { HandleResponseParams } from './interfaces/handle-response.interface';
 import {
   UseFormInputProps,
   UseFormInputReturn,
 } from './interfaces/use-form-input.interface';
-import {
-  HandleSubmitParams,
-  HandleSubmitReturn,
-} from './types/handle-submit.type';
 import { ValidatorsKeyof } from './types/validators.type';
 
 /**
- * Hook that receives a list with validation types and field name, in order to
- * validate it and return the state of this validation.
+ * Hook that receives a list with validation types, field name and mask in order
+ * to validate it and return the state of this validation.
  *
  * @typedef {object} UseFormInputProps
  * @property {object[]} [validators]
  * @property {string} [fieldName=Campo]
  * @property {string} [customMessage]
+ * @property {string} [mask]
  * @returns {UseFormInputReturn}
  */
 export default function useFormInput({
   validators,
   fieldName = 'Campo',
   customMessage,
+  mask,
 }: UseFormInputProps): UseFormInputReturn {
   const [value, setValue] = useState<string>('');
   const [error, setError] = useState<string>('');
@@ -63,17 +63,63 @@ export default function useFormInput({
         isValid: stringToBoolean(`${fieldValue.length >= validatorValue}`),
         message: `${fieldName} deve ter no mínimo ${validatorValue} caracteres.`,
       },
-      email: {
-        isValid: stringToBoolean(`${formRegex.EMAIL.test(fieldValue)}`),
-        message: `${fieldName} inválido.`,
-      },
       equals: {
         isValid: stringToBoolean(`${fieldValue === validatorValue}`),
         message: `${customMessage}`,
       },
+      onlyLetters: {
+        isValid: stringToBoolean(
+          `${formValidationsRegex.ONLY_LETTERS.test(fieldValue)}`
+        ),
+        message: `${fieldName} deve ter somente letras.`,
+      },
+      onlyNumbers: {
+        isValid: stringToBoolean(
+          `${formValidationsRegex.ONLY_NUMBERS.test(fieldValue)}`
+        ),
+        message: `${fieldName} deve ter somente números.`,
+      },
+      cpf: {
+        isValid: isValidCPF(fieldValue),
+        message: `${fieldName} inválido.`,
+      },
+      phone: {
+        isValid: stringToBoolean(
+          `${formValidationsRegex.PHONE.test(fieldValue)}`
+        ),
+        message: `${fieldName} inválido.`,
+      },
+      email: {
+        isValid: stringToBoolean(
+          `${formValidationsRegex.EMAIL.test(fieldValue)}`
+        ),
+        message: `${fieldName} inválido.`,
+      },
     };
 
     return validators[validatorName];
+  }
+
+  /**
+   * Function that receives an event from a field and invokes the mask function
+   * that has been defined.
+   *
+   * @param {FormEvent<HTMLInputElement>} event
+   * @returns {void}
+   */
+  function handleMasks(event: FormEvent<HTMLInputElement>): void {
+    switch (mask) {
+      case 'cpf':
+        cpfMask(event);
+        break;
+      case 'phone':
+        phoneMask(event);
+        break;
+      case 'cep':
+        cepMask(event);
+        break;
+      default:
+    }
   }
 
   /**
@@ -114,31 +160,36 @@ export default function useFormInput({
   }
 
   /**
-   * Function that receives the 'target' of the field and requests its
-   * validation if there is an error message, until it becomes valid.
+   * Function that receives the 'event' from the field, applies mask if there is
+   * one and requests its validation if there is an error message, until it
+   * becomes valid.
    *
-   * @param {EventTarget} target
+   * @param {FormEvent<HTMLInputElement>} event
    * @returns {void}
    */
-  function onChange({ target }: ChangeEvent<HTMLInputElement>): void {
-    if (error) {
-      handleValidation(target.value);
+  function onChange(event: FormEvent<HTMLInputElement>): void {
+    const { currentTarget } = event;
+
+    if (mask) {
+      handleMasks(event);
     }
 
-    setValue(target.value);
+    if (error) {
+      handleValidation(currentTarget.value);
+    }
+
+    setValue(currentTarget.value);
   }
 
   /**
-   * Function that receives the value of a field which, if not empty, will call
-   * the validation function.
+   * Function that receives the value of a field and that will call the
+   * validation function.
    *
    * @param {string} fieldValue
    * @returns {void}
    */
   function handleOnBlur(fieldValue: string): void {
-    if (fieldValue !== '') {
-      handleValidation(fieldValue);
-    }
+    handleValidation(fieldValue);
   }
 
   return {
@@ -149,80 +200,4 @@ export default function useFormInput({
     validate: () => handleValidation(value),
     onBlur: () => handleOnBlur(value),
   };
-}
-
-/**
- * Function that receives an object with form fields that make them empty.
- *
- * @typedef {object} HandleClearParams
- * @property {object} formFields
- * @returns {void}
- */
-export function handleClear({ formFields }: HandleClearParams): void {
-  Object.entries(formFields).forEach((field) => {
-    field[1].setValue('');
-  });
-}
-
-/**
- * Function that receives an object with form fields, returning if it is valid
- * or not, as well as an object with the name and value of each form field.
- *
- * @typedef {object} HandleSubmitParams
- * @property {object} formFields
- * @returns {HandleSubmitReturn}
- */
-export function handleSubmit({
-  formFields,
-}: HandleSubmitParams): HandleSubmitReturn {
-  let isValidForm = true;
-  const formFieldsObject: { [key: string]: string } = {};
-
-  Object.entries(formFields).forEach((field) => {
-    const isValidField = field[1].validate();
-
-    formFieldsObject[field[0]] = field[1].value;
-
-    if (!isValidField) {
-      isValidForm = false;
-    }
-  });
-
-  return { isValidForm, formFieldsObject };
-}
-
-/**
- * Function that receives a response and form fields, to display a custom or
- * standardized response message, clear the form fields on success, and return
- * the status of that response.
- *
- * @typedef {object} HandleResponseParams<T>
- * @property {HttpResponse} response
- * @property {object} formFields
- * @property {string} [customSuccessMessage]
- * @property {string} [customErrorMessage]
- * @returns {boolean}
- */
-export function handleResponse<T>({
-  response,
-  formFields,
-  customSuccessMessage,
-  customErrorMessage,
-}: HandleResponseParams<T>): boolean {
-  const { parseBody } = response;
-  const isSuccessResponse = parseBody?.success;
-  const responseMessage = parseBody?.statusMessage;
-  const successMessage = customSuccessMessage || responseMessage;
-  const errorMessage = customErrorMessage || responseMessage;
-
-  if (isSuccessResponse) {
-    alert(successMessage);
-    handleClear({ formFields });
-
-    return true;
-  }
-
-  alert(errorMessage);
-
-  return false;
 }

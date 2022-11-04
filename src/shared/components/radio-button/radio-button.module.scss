@@ -12,6 +12,8 @@
     display: flex;
     gap: px-to-rem(5px);
     align-items: center;
+    width: max-content;
+    cursor: pointer;
   }
 
   // ---------------------------------------------------------------------------

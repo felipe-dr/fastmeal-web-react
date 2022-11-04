@@ -5,9 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { useUserContext } from 'core/contexts/user/user.context';
 import useFetch from 'core/hooks/use-fetch/use-fetch.hook';
-import useFormInput, {
-  handleSubmit,
-} from 'core/hooks/use-form-input/use-form-input.hook';
+import useFormInput from 'core/hooks/use-form-input/use-form-input.hook';
+import handleSubmit from 'core/utils/forms/triggers/handle-submit/handle-submit.util';
 
 import ButtonLinkComponent from 'shared/components/button-link/button-link.component';
 import ErrorsComponent from 'shared/components/errors/errors.component';

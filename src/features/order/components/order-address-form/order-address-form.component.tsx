@@ -1,8 +1,13 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import classNames from 'classnames';
 
 import InputComponent from 'shared/components/input/input.component';
 
-export default function OrderAddressFormComponent(): JSX.Element {
+import { OrderFormFieldsProps } from 'features/order/interfaces/order-form-fields.interface';
+
+export default function OrderAddressFormComponent({
+  formFields,
+}: OrderFormFieldsProps): JSX.Element {
   return (
     <>
       <legend
@@ -14,11 +19,48 @@ export default function OrderAddressFormComponent(): JSX.Element {
       >
         Endereço de entrega
       </legend>
-      <InputComponent name="post-code" type="text" placeholder="CEP" />
-      <InputComponent name="address" type="text" placeholder="Endereço" />
-      <InputComponent name="number" type="text" placeholder="Número" />
-      <InputComponent name="district" type="text" placeholder="Bairro" />
-      <InputComponent name="complement" type="text" placeholder="Complemento" />
+      <InputComponent
+        name="cep"
+        type="text"
+        placeholder="CEP"
+        {...formFields.cep}
+      />
+      <InputComponent
+        name="public-place"
+        type="text"
+        placeholder="Logradouro"
+        {...formFields.publicPlace}
+      />
+      <InputComponent
+        name="number"
+        type="text"
+        placeholder="Número"
+        {...formFields.number}
+      />
+      <InputComponent
+        name="district"
+        type="text"
+        placeholder="Bairro"
+        {...formFields.district}
+      />
+      <InputComponent
+        name="complement"
+        type="text"
+        placeholder="Complemento"
+        {...formFields.complement}
+      />
+      <InputComponent
+        name="city"
+        type="text"
+        placeholder="Cidade"
+        {...formFields.city}
+      />
+      <InputComponent
+        name="uf"
+        type="text"
+        placeholder="UF"
+        {...formFields.uf}
+      />
     </>
   );
 }

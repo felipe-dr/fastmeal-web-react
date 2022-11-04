@@ -5,7 +5,7 @@ import InputComponent from 'shared/components/input/input.component';
 
 import { OrderFormFieldsProps } from 'features/order/interfaces/order-form-fields.interface';
 
-export default function OrderPersonalFormComponent({
+export default function OrderAccountFormComponent({
   formFields,
 }: OrderFormFieldsProps): JSX.Element {
   return (
@@ -17,26 +17,31 @@ export default function OrderPersonalFormComponent({
           'u-mb-20 u-pb-5': true,
         })}
       >
-        Dados pessoais
+        Dados da conta
       </legend>
       <InputComponent
-        name="cpf"
+        name="username"
         type="text"
-        placeholder="CPF"
-        autoFocus
-        {...formFields.cpf}
+        placeholder="Nome de usuário"
+        {...formFields.username}
       />
       <InputComponent
-        name="name"
+        name="email"
         type="text"
-        placeholder="Nome completo"
-        {...formFields.fullName}
+        placeholder="E-mail"
+        {...formFields.email}
       />
       <InputComponent
-        name="phone"
-        type="text"
-        placeholder="Telefone"
-        {...formFields.phone}
+        name="password"
+        type="password"
+        placeholder="Senha"
+        {...formFields.password}
+      />
+      <InputComponent
+        name="password-confirm"
+        type="password"
+        placeholder="Confirmar senha"
+        {...formFields.passwordConfirm}
       />
     </>
   );
