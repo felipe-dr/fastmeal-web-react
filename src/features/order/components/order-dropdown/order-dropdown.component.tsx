@@ -1,17 +1,18 @@
 import classNames from 'classnames';
 import { RiBankCard2Line, RiShoppingBasketLine } from 'react-icons/ri';
 
+import { useOrderContext } from 'core/contexts/order/order.context';
 import toBRL from 'core/utils/conversions/currency.util';
 
 import ButtonLinkComponent from 'shared/components/button-link/button-link.component';
 import DropdownComponent from 'shared/components/dropdown/dropdown.component';
 
-import { orderItems } from 'features/order/interfaces/order-item.interface';
-
 import OrderItemDropdownComponent from '../order-item-dropdown/order-item-dropdown.component';
 import orderDropdownStyles from './order-dropdown.module.scss';
 
 export default function OrderDropdownComponent(): JSX.Element {
+  const { orderItems, orderSubtotal } = useOrderContext();
+
   return (
     <DropdownComponent
       buttonAppearance="round"
@@ -46,7 +47,7 @@ export default function OrderDropdownComponent(): JSX.Element {
                 <th className="u-font-bold u-pl-20" scope="row">
                   Subtotal:
                 </th>
-                <td className="u-text-right u-pr-20">{toBRL(25.9)}</td>
+                <td className="u-text-right u-pr-20">{toBRL(orderSubtotal)}</td>
               </tr>
             </tbody>
           </table>

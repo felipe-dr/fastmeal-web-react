@@ -1,10 +1,9 @@
 import { RiAddLine, RiCloseCircleLine, RiSubtractLine } from 'react-icons/ri';
 
+import { useOrderContext } from 'core/contexts/order/order.context';
 import toBRL from 'core/utils/conversions/currency.util';
 
 import ButtonLinkComponent from 'shared/components/button-link/button-link.component';
-
-import { orderItems } from 'features/order/interfaces/order-item.interface';
 
 import { OrderListProps } from './interfaces/order-list.interface.';
 import styles from './order-list.module.scss';
@@ -17,6 +16,8 @@ export default function OrderListComponent({
   showPrice = true,
   showSubtotal = true,
 }: OrderListProps): JSX.Element {
+  const { orderItems, addItem, removeItem } = useOrderContext();
+
   return orderItems.length > 0 ? (
     <table className={styles['c-order-list']}>
       <thead>
@@ -39,48 +40,24 @@ export default function OrderListComponent({
         </tr>
       </thead>
       <tbody>
-        {orderItems.map(
-          ({ id, imagePath, name, description, quantity, price, subtotal }) => (
-            <tr key={id}>
-              {showImage && (
-                <td>
-                  <figure>
-                    <img src={imagePath} width="50" height="50" alt={name} />
-                  </figure>
-                </td>
-              )}
-              {showName && <td>{name}</td>}
-              {showDescription && <td>{description}</td>}
-              {showQuantity && (
-                <td className="u-text-center">
-                  <ButtonLinkComponent
-                    elementType="button"
-                    visualType="button"
-                    appearance="compact"
-                    color="transparent"
-                    hoverTextColor="primary"
-                    type="button"
-                    styleClasses="u-align-middle u-p-5"
-                  >
-                    <RiSubtractLine className="u-flex-shrink-0" />
-                  </ButtonLinkComponent>
-                  {quantity}
-                  <ButtonLinkComponent
-                    elementType="button"
-                    visualType="button"
-                    appearance="compact"
-                    color="transparent"
-                    hoverTextColor="primary"
-                    type="button"
-                    styleClasses="u-align-middle u-p-5"
-                  >
-                    <RiAddLine className="u-flex-shrink-0" />
-                  </ButtonLinkComponent>
-                </td>
-              )}
-              {showPrice && <td>{toBRL(price)}</td>}
-              {showSubtotal && <td>{toBRL(subtotal)}</td>}
+        {orderItems.map((orderItem) => (
+          <tr key={orderItem.id}>
+            {showImage && (
               <td>
+                <figure>
+                  <img
+                    src={orderItem.imagePath}
+                    width="50"
+                    height="50"
+                    alt={orderItem.name}
+                  />
+                </figure>
+              </td>
+            )}
+            {showName && <td>{orderItem.name}</td>}
+            {showDescription && <td>{orderItem.description}</td>}
+            {showQuantity && (
+              <td className="u-text-center">
                 <ButtonLinkComponent
                   elementType="button"
                   visualType="button"
@@ -88,14 +65,44 @@ export default function OrderListComponent({
                   color="transparent"
                   hoverTextColor="primary"
                   type="button"
-                  styleClasses="u-display-flex u-flex-justify-content-end u-width-100 u-p-5"
+                  styleClasses="u-align-middle u-p-5"
+                  onClick={() => removeItem(orderItem)}
                 >
-                  <RiCloseCircleLine className="u-flex-shrink-0" />
+                  <RiSubtractLine className="u-flex-shrink-0" />
+                </ButtonLinkComponent>
+                {orderItem.quantity}
+                <ButtonLinkComponent
+                  elementType="button"
+                  visualType="button"
+                  appearance="compact"
+                  color="transparent"
+                  hoverTextColor="primary"
+                  type="button"
+                  styleClasses="u-align-middle u-p-5"
+                  onClick={() => addItem(orderItem)}
+                >
+                  <RiAddLine className="u-flex-shrink-0" />
                 </ButtonLinkComponent>
               </td>
-            </tr>
-          )
-        )}
+            )}
+            {showPrice && <td>{toBRL(orderItem.price)}</td>}
+            {showSubtotal && <td>{toBRL(orderItem.subtotal)}</td>}
+            <td>
+              <ButtonLinkComponent
+                elementType="button"
+                visualType="button"
+                appearance="compact"
+                color="transparent"
+                hoverTextColor="primary"
+                type="button"
+                styleClasses="u-display-flex u-flex-justify-content-end u-width-100 u-p-5"
+                onClick={() => removeItem(orderItem, true)}
+              >
+                <RiCloseCircleLine className="u-flex-shrink-0" />
+              </ButtonLinkComponent>
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
   ) : (

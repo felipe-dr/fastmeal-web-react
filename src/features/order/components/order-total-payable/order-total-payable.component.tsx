@@ -1,11 +1,14 @@
 import classNames from 'classnames';
 import { RiBankCard2Line } from 'react-icons/ri';
 
+import { useOrderContext } from 'core/contexts/order/order.context';
 import toBRL from 'core/utils/conversions/currency.util';
 
 import ButtonLinkComponent from 'shared/components/button-link/button-link.component';
 
 export default function OrderTotalPayableComponent(): JSX.Element {
+  const { shipping, orderSubtotal, orderTotal } = useOrderContext();
+
   return (
     <>
       <legend
@@ -21,15 +24,15 @@ export default function OrderTotalPayableComponent(): JSX.Element {
         <tbody>
           <tr>
             <th scope="row">Frete</th>
-            <td className="u-text-right">{toBRL(10.3)}</td>
+            <td className="u-text-right">{toBRL(shipping)}</td>
           </tr>
           <tr>
             <th scope="row">Subtotal</th>
-            <td className="u-text-right">{toBRL(36.3)}</td>
+            <td className="u-text-right">{toBRL(orderSubtotal)}</td>
           </tr>
           <tr>
             <th scope="row">Total</th>
-            <td className="u-text-right">{toBRL(46.6)}</td>
+            <td className="u-text-right">{toBRL(orderTotal)}</td>
           </tr>
         </tbody>
       </table>

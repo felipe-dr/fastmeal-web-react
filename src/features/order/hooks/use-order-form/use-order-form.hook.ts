@@ -1,14 +1,14 @@
 import { FormEvent, useEffect, useState } from 'react';
 
+import { useOrderContext } from 'core/contexts/order/order.context';
 import useFormInput from 'core/hooks/use-form-input/use-form-input.hook';
 import useFormRadio from 'core/hooks/use-form-radio/use-form-radio.hook';
 import handleSubmit from 'core/utils/forms/triggers/handle-submit/handle-submit.util';
 
-import { orderItems } from 'features/order/interfaces/order-item.interface';
-
 import { UseOrderFormReturn } from './interfaces/use-order-form.interface';
 
 export default function useOrderForm(): UseOrderFormReturn {
+  const { orderItems } = useOrderContext();
   const [password, setPassword] = useState<string>('');
   const { selectedValue, error, handleValidation, onChange } = useFormRadio({
     radioGroupName: 'Forma de pagamento',
