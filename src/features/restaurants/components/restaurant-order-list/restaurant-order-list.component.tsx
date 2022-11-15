@@ -5,17 +5,19 @@ import {
   RiShoppingBasketLine,
 } from 'react-icons/ri';
 
+import { useOrderContext } from 'core/contexts/order/order.context';
 import toBRL from 'core/utils/conversions/currency.util';
 
 import ButtonLinkComponent from 'shared/components/button-link/button-link.component';
 
 import OrderListComponent from 'features/order/components/order-list/order-list.component';
 import orderListStyles from 'features/order/components/order-list/order-list.module.scss';
-import { orderItems } from 'features/order/interfaces/order-item.interface';
 
 import restaurantOrderListStyles from './restaurant-order-list.module.scss';
 
 export default function RestaurantOrderListComponent(): JSX.Element {
+  const { orderItems, orderSubtotal, clearOrderItems } = useOrderContext();
+
   return (
     <div
       className={classNames({
@@ -60,7 +62,7 @@ export default function RestaurantOrderListComponent(): JSX.Element {
                 <th className="u-font-bold u-pl-32" scope="row">
                   Subtotal:
                 </th>
-                <td className="u-text-right u-pr-32">{toBRL(25.9)}</td>
+                <td className="u-text-right u-pr-32">{toBRL(orderSubtotal)}</td>
               </tr>
             </tbody>
           </table>
@@ -80,6 +82,7 @@ export default function RestaurantOrderListComponent(): JSX.Element {
               hoverColor="primary"
               styleClasses="u-display-flex u-flex-align-items-center"
               type="button"
+              onClick={clearOrderItems}
             >
               <RiCloseCircleLine className="u-flex-shrink-0 u-mr-5" />
               Limpar

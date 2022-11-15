@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { RiCloseCircleLine } from 'react-icons/ri';
 
+import { useOrderContext } from 'core/contexts/order/order.context';
 import toBRL from 'core/utils/conversions/currency.util';
 
 import ButtonLinkComponent from 'shared/components/button-link/button-link.component';
@@ -12,24 +13,26 @@ import orderItemDropdownStyles from './order-item-dropdown.module.scss';
 export default function OrderItemDropdownComponent({
   orderItems,
 }: OrderItemDropdownProps): JSX.Element {
+  const { removeItem } = useOrderContext();
+
   return (
     <>
-      {orderItems.map(({ id, imagePath, name, quantity, price }) => (
+      {orderItems.map((orderItem) => (
         <li
           className={classNames({
             [orderItemDropdownStyles['c-order-item-dropdown']]: true,
             [dropdownStyles['c-dropdown__item']]: true,
             [dropdownStyles['c-dropdown__divider']]: true,
           })}
-          key={id}
+          key={orderItem.id}
         >
           <figure>
             <img
               className={orderItemDropdownStyles['c-order-item-dropdown__img']}
-              src={imagePath}
+              src={orderItem.imagePath}
               width="50"
               height="50"
-              alt={name}
+              alt={orderItem.name}
             />
           </figure>
           <div>
@@ -38,10 +41,10 @@ export default function OrderItemDropdownComponent({
                 orderItemDropdownStyles['c-order-item-dropdown__title']
               }
             >
-              {name}
+              {orderItem.name}
             </strong>
-            {`${quantity} × `}
-            <span className="u-text-base-3">{toBRL(price)}</span>
+            {`${orderItem.quantity} × `}
+            <span className="u-text-base-3">{toBRL(orderItem.price)}</span>
           </div>
           <ButtonLinkComponent
             elementType="button"
@@ -53,6 +56,7 @@ export default function OrderItemDropdownComponent({
             styleClasses={
               orderItemDropdownStyles['c-order-item-dropdown__remove']
             }
+            onClick={() => removeItem(orderItem, true)}
           >
             <RiCloseCircleLine className="u-flex-shrink-0" size={18} />
           </ButtonLinkComponent>
