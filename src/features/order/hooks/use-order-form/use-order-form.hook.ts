@@ -1,6 +1,8 @@
 import { FormEvent, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { useOrderContext } from 'core/contexts/order/order.context';
+import { useUserContext } from 'core/contexts/user/user.context';
 import useFormInput from 'core/hooks/use-form-input/use-form-input.hook';
 import useFormRadio from 'core/hooks/use-form-radio/use-form-radio.hook';
 import handleSubmit from 'core/utils/forms/triggers/handle-submit/handle-submit.util';
@@ -9,10 +11,12 @@ import { UseOrderFormReturn } from './interfaces/use-order-form.interface';
 
 export default function useOrderForm(): UseOrderFormReturn {
   const { orderItems } = useOrderContext();
+  const { isAuthenticatedUser } = useUserContext();
   const [password, setPassword] = useState<string>('');
   const { selectedValue, error, handleValidation, onChange } = useFormRadio({
     radioGroupName: 'Forma de pagamento',
   });
+  const navigate = useNavigate();
 
   const formFields = {
     cpf: useFormInput({
@@ -78,14 +82,25 @@ export default function useOrderForm(): UseOrderFormReturn {
     setPassword(formFields.password.value);
   }, [formFields.password.value]);
 
+  useEffect(() => {
+    if (!isAuthenticatedUser) {
+      navigate('/auth/signin');
+    }
+  }, [isAuthenticatedUser]);
+
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const { isValidForm, formFieldsObject } = handleSubmit({ formFields });
     const hasOrderItems = orderItems.length > 0;
     const isSelectedPaymentMethod = handleValidation();
+    const isValidCheckoutOrder =
+      isAuthenticatedUser &&
+      isValidForm &&
+      hasOrderItems &&
+      isSelectedPaymentMethod;
 
-    if (isValidForm && hasOrderItems && isSelectedPaymentMethod) {
+    if (isValidCheckoutOrder) {
       console.log('Form válido');
     }
   }

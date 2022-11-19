@@ -1,6 +1,8 @@
 import { lazy } from 'react';
 import { useRoutes } from 'react-router-dom';
 
+import IsAuthenticatedComponent from 'core/security/is-authenticated/is-authenticated.component';
+
 import MainWebsiteComponent from 'layouts/website/main-website/main-website.component';
 
 import withSuspense from './with-suspense.component';
@@ -84,11 +86,16 @@ export default function Routes() {
           ],
         },
         {
-          path: 'order',
+          element: <IsAuthenticatedComponent />,
           children: [
             {
-              path: 'checkout',
-              element: <OrderCheckoutComponent />,
+              path: 'order',
+              children: [
+                {
+                  path: 'checkout',
+                  element: <OrderCheckoutComponent />,
+                },
+              ],
             },
           ],
         },
