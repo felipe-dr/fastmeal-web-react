@@ -8,6 +8,7 @@ import { useUserContext } from 'core/contexts/user/user.context';
 
 import AuthDropdownComponent from 'features/auth/components/auth-dropdown/auth-dropdown.component';
 import OrderDropdownComponent from 'features/order/components/order-dropdown/order-dropdown.component';
+import OrderTotalBadgeComponent from 'features/order/components/order-total-badge/order-total-badge.component';
 
 import ButtonLinkComponent from '../button-link/button-link.component';
 import MobileNavButtonComponent from '../mobile-nav-button/mobile-nav-button.component';
@@ -105,6 +106,7 @@ export default function NavbarComponent(): JSX.Element {
                 onClick={closeNavbar}
               >
                 <RiShoppingBasketLine className="u-flex-shrink-0" size={20} />
+                <OrderTotalBadgeComponent />
               </ButtonLinkComponent>
             ) : (
               <OrderDropdownComponent />

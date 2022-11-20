@@ -21,6 +21,7 @@ export default function OrderProvider({
   children,
 }: OrderProviderProps): JSX.Element {
   const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
+  const [orderItemsQuantity, setOrderItemsQuantity] = useState<number>(0);
   const [orderSubtotal, setOrderSubtotal] = useState<number>(0);
   const [orderTotal, setOrderTotal] = useState<number>(0);
 
@@ -28,12 +29,14 @@ export default function OrderProvider({
     () => ({
       orderItems,
       setOrderItems,
+      orderItemsQuantity,
+      setOrderItemsQuantity,
       orderSubtotal,
       setOrderSubtotal,
       orderTotal,
       setOrderTotal,
     }),
-    [orderItems, orderSubtotal, orderTotal]
+    [orderItems, orderItemsQuantity, orderSubtotal, orderTotal]
   );
 
   return (
@@ -55,6 +58,8 @@ export function useOrderContext(): OrderContextReturn {
   const {
     orderItems,
     setOrderItems,
+    orderItemsQuantity,
+    setOrderItemsQuantity,
     orderSubtotal,
     setOrderSubtotal,
     orderTotal,
@@ -133,6 +138,10 @@ export function useOrderContext(): OrderContextReturn {
   }
 
   useEffect(() => {
+    setOrderItemsQuantity(orderItems.length);
+  }, [orderItems]);
+
+  useEffect(() => {
     calcOrderSubtotal();
     calcOrderTotal();
   }, [orderItems, orderSubtotal]);
@@ -140,6 +149,7 @@ export function useOrderContext(): OrderContextReturn {
   return {
     shipping,
     orderItems,
+    orderItemsQuantity,
     orderSubtotal,
     orderTotal,
     addItem,

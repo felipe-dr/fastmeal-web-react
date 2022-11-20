@@ -8,6 +8,7 @@ import ButtonLinkComponent from 'shared/components/button-link/button-link.compo
 import DropdownComponent from 'shared/components/dropdown/dropdown.component';
 
 import OrderItemDropdownComponent from '../order-item-dropdown/order-item-dropdown.component';
+import OrderTotalBadgeComponent from '../order-total-badge/order-total-badge.component';
 import orderDropdownStyles from './order-dropdown.module.scss';
 
 export default function OrderDropdownComponent(): JSX.Element {
@@ -21,6 +22,7 @@ export default function OrderDropdownComponent(): JSX.Element {
       buttonIcon={
         <RiShoppingBasketLine className="u-flex-shrink-0" size={20} />
       }
+      buttonBadge={<OrderTotalBadgeComponent />}
       buttonStyleClasses={classNames({
         'u-display-flex': true,
         'u-border-width-1': true,

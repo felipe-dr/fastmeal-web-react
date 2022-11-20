@@ -22,6 +22,7 @@ export interface DropdownProps {
   buttonMobileLabel?: string;
   buttonLabel?: string;
   buttonIcon?: ReactNode;
+  buttonBadge?: ReactNode;
   buttonStyleClasses?: string;
   listDefaultPadding?: boolean;
   listMaxHeight?: boolean;
