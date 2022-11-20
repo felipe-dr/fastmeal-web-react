@@ -19,6 +19,7 @@ export default function DropdownComponent({
   buttonMobileLabel,
   buttonLabel,
   buttonIcon,
+  buttonBadge,
   buttonStyleClasses,
   listDefaultPadding = true,
   listMaxHeight,
@@ -159,6 +160,7 @@ export default function DropdownComponent({
       >
         {buttonIcon && buttonIcon}
         {buttonLabel && buttonLabel}
+        {buttonBadge && buttonBadge}
       </ButtonLinkComponent>
       {children ? (
         <div
