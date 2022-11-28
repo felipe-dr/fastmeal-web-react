@@ -12,4 +12,13 @@
   @include media-breakpoint('md') {
     grid-template-columns: repeat(2, 2fr);
   }
+
+  // ---------------------------------------------------------------------------
+  // l-restaurant-reviews__text
+  // ---------------------------------------------------------------------------
+  &__text {
+    padding: px-to-rem(20px);
+    border-radius: px-to-rem(5px);
+    background-color: $color-base-2;
+  }
 }
