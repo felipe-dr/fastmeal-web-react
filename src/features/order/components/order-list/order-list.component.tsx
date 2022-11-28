@@ -106,7 +106,7 @@ export default function OrderListComponent({
       </tbody>
     </table>
   ) : (
-    <p className="u-display-flex u-flex-wrap u-gap-5">
+    <p className="u-display-flex u-flex-justify-content-center u-flex-sm-justify-content-start u-flex-wrap u-gap-5">
       Nenhum item adicionado.
       <ButtonLinkComponent
         elementType="link"

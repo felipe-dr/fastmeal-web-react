@@ -1,10 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import classNames from 'classnames';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import useFetch from 'core/hooks/use-fetch/use-fetch.hook';
 
 import ErrorsComponent from 'shared/components/errors/errors.component';
+import SpinnerComponent from 'shared/components/spinner/spinner.component';
 
 import { RestaurantReview } from 'features/restaurants/interfaces/restaurant-review.interface';
 import RestaurantsService from 'features/restaurants/services/restaurants/restaurants.service';
@@ -25,7 +27,7 @@ export default function RestaurantReviewsComponent(): JSX.Element {
   }, []);
 
   if (isLoading) {
-    return <p>Carregando...</p>;
+    return <SpinnerComponent />;
   }
 
   if (errors.length > 0) {
@@ -33,7 +35,18 @@ export default function RestaurantReviewsComponent(): JSX.Element {
   }
 
   if (data?.length === 0) {
-    return <p>Não há avaliações disponíveis no momento.</p>;
+    return (
+      <p
+        className={classNames({
+          [styles['l-restaurant-reviews__text']]: true,
+          'u-text-center': true,
+          'u-text-sm-left': true,
+          'u-shadow-small': true,
+        })}
+      >
+        Não há avaliações disponíveis no momento.
+      </p>
+    );
   }
 
   return (

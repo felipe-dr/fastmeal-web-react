@@ -6,6 +6,7 @@ import useFetch from 'core/hooks/use-fetch/use-fetch.hook';
 
 import ErrorsComponent from 'shared/components/errors/errors.component';
 import HeaderTitleComponent from 'shared/components/header-title/header-title.component';
+import SpinnerComponent from 'shared/components/spinner/spinner.component';
 
 import RestaurantComponent from '../../components/restaurant/restaurant.component';
 import { Restaurant } from '../../interfaces/restaurant.interface';
@@ -18,7 +19,7 @@ export default function RestaurantsComponent(): JSX.Element {
 
   function rendersRestaurantsOrFeedback() {
     if (isLoading) {
-      return <p>Carregando...</p>;
+      return <SpinnerComponent />;
     }
 
     if (errors.length > 0) {
@@ -26,12 +27,20 @@ export default function RestaurantsComponent(): JSX.Element {
     }
 
     if (data) {
+      if (data.length === 0) {
+        return (
+          <p className="u-text-center">
+            Não há restaurantes disponíveis no momento.
+          </p>
+        );
+      }
+
       return data?.map((restaurant) => (
         <RestaurantComponent key={restaurant.id} {...restaurant} />
       ));
     }
 
-    return <p>Não há restaurantes disponíveis no momento.</p>;
+    return null;
   }
 
   useEffect(() => {
@@ -46,7 +55,7 @@ export default function RestaurantsComponent(): JSX.Element {
       <div
         className={classNames({
           'grid-container': true,
-          [styles['l-restaurants']]: true,
+          [styles['l-restaurants']]: data && data.length > 0,
         })}
       >
         {rendersRestaurantsOrFeedback()}

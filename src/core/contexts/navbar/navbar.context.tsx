@@ -1,5 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
+import useScrollLock from 'core/hooks/use-scroll-lock/use-scroll-lock.hook';
+
 import {
   NavbarContextData,
   NavbarContextReturn,
@@ -40,6 +42,7 @@ export function useNavbarContext(): NavbarContextReturn {
   }
 
   const { showNavbar, setShowNavbar } = useContext(NavbarContext);
+  const { lockScroll, unlockScroll } = useScrollLock();
 
   function handleNavbar(): void {
     setShowNavbar(!showNavbar);
@@ -50,15 +53,11 @@ export function useNavbarContext(): NavbarContextReturn {
   }
 
   useEffect(() => {
-    const bodyElement: HTMLElement = document.body;
-
     if (showNavbar) {
-      bodyElement.classList.add('u-overflow-hidden');
+      lockScroll();
     }
 
-    return () => {
-      bodyElement.classList.remove('u-overflow-hidden');
-    };
+    return () => unlockScroll();
   }, [showNavbar]);
 
   return { showNavbar, handleNavbar, closeNavbar };
