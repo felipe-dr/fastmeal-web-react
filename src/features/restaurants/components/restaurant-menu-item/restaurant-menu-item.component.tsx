@@ -1,8 +1,11 @@
 import classNames from 'classnames';
 import { RiAddCircleLine } from 'react-icons/ri';
 
+import vocabulary from 'core/constants/vocabulary.constant';
 import { useOrderContext } from 'core/contexts/order/order.context';
+import { useToastContext } from 'core/contexts/toast/toast.context';
 import toBRL from 'core/utils/conversions/currency.util';
+import uuid from 'core/utils/generations/uuid';
 
 import ButtonLinkComponent from 'shared/components/button-link/button-link.component';
 import { ClassNameProps } from 'shared/interfaces/class-name.interface';
@@ -22,6 +25,7 @@ export default function RestaurantMenuItemComponent({
   styleClasses,
 }: RestaurantMenuItemProps): JSX.Element {
   const { addItem } = useOrderContext();
+  const { addToast } = useToastContext({});
 
   return (
     <div
@@ -55,7 +59,7 @@ export default function RestaurantMenuItemComponent({
           hoverTextColor="primary"
           type="button"
           styleClasses="u-display-flex u-flex-align-items-center u-px-5"
-          onClick={() =>
+          onClick={() => {
             addItem({
               id,
               name,
@@ -64,8 +68,14 @@ export default function RestaurantMenuItemComponent({
               imagePath,
               quantity: 0,
               subtotal: 0,
-            })
-          }
+            });
+            addToast({
+              id: uuid(),
+              title: `${vocabulary.ORDER}`,
+              type: 'info',
+              message: `${name} adicionado.`,
+            });
+          }}
         >
           <RiAddCircleLine className="u-mr-5" />
           Adicionar

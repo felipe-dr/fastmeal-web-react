@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useUserContext } from 'core/contexts/user/user.context';
 import useFetch from 'core/hooks/use-fetch/use-fetch.hook';
 import useFormInput from 'core/hooks/use-form-input/use-form-input.hook';
-import handleSubmit from 'core/utils/forms/triggers/handle-submit/handle-submit.util';
+import useForm from 'core/hooks/use-form/use-form.hook';
 
 import ButtonLinkComponent from 'shared/components/button-link/button-link.component';
 import ErrorsComponent from 'shared/components/errors/errors.component';
@@ -16,6 +16,7 @@ import { ServiceRequest } from 'shared/types/service-request.type';
 import { User } from 'features/auth/interfaces/user.interface';
 
 export default function SignInComponent(): JSX.Element {
+  const { handleSubmit } = useForm<User>();
   const { request, statusMessage, isLoading, errors } = useFetch<User>();
   const { signIn } = useUserContext();
   const navigate = useNavigate();

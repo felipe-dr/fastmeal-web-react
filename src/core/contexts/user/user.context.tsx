@@ -1,8 +1,10 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 import localStorage from 'core/constants/local-storage.constant';
+import vocabulary from 'core/constants/vocabulary.constant';
+import useForm from 'core/hooks/use-form/use-form.hook';
 import AuthService from 'core/services/auth/auth.service';
-import handleResponse from 'core/utils/forms/triggers/handle-response/handle-response.util';
+import uuid from 'core/utils/generations/uuid';
 import {
   getItemLocalStorage,
   removeItemsLocalStorage,
@@ -11,6 +13,7 @@ import {
 
 import { User } from 'features/auth/interfaces/user.interface';
 
+import { useToastContext } from '../toast/toast.context';
 import { SignInParams } from './interfaces/sign-in.interface';
 import {
   UserContextData,
@@ -65,6 +68,8 @@ export function useUserContext(): UserContextReturn {
     isAuthenticatedUser,
     setIsAuthenticatedUser,
   } = useContext(UserContext);
+  const { handleResponse } = useForm();
+  const { addToast } = useToastContext({});
 
   function handleAuth(userData: User): void {
     if (userData) {
@@ -81,7 +86,11 @@ export function useUserContext(): UserContextReturn {
   }: SignInParams): Promise<boolean> {
     const authService = AuthService.getInstance();
     const response = await serviceRequest(authService.signIn(formFieldsObject));
-    const isSuccessResponse = handleResponse({ response, formFields });
+    const isSuccessResponse = handleResponse({
+      response,
+      formFields,
+      messageTitle: `${vocabulary.AUTH}`,
+    });
 
     if (isSuccessResponse) {
       const data = response.parseBody?.data;
@@ -96,7 +105,13 @@ export function useUserContext(): UserContextReturn {
     setUserEmail('');
     setIsAuthenticatedUser(false);
     removeItemsLocalStorage([localStorage.USER]);
-    alert('Logoff efetuado com sucesso');
+
+    addToast({
+      id: uuid(),
+      title: `${vocabulary.AUTH}`,
+      type: 'success',
+      message: 'Logoff efetuado com sucesso.',
+    });
   }
 
   async function signUp({
@@ -106,7 +121,11 @@ export function useUserContext(): UserContextReturn {
   }: SignUpParams): Promise<boolean> {
     const authService = AuthService.getInstance();
     const response = await serviceRequest(authService.create(formFieldsObject));
-    const isSuccessResponse = handleResponse({ response, formFields });
+    const isSuccessResponse = handleResponse({
+      response,
+      formFields,
+      messageTitle: `${vocabulary.AUTH}`,
+    });
 
     if (isSuccessResponse) {
       await signIn({

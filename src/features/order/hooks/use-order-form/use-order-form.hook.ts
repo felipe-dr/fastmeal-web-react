@@ -5,11 +5,12 @@ import { useOrderContext } from 'core/contexts/order/order.context';
 import { useUserContext } from 'core/contexts/user/user.context';
 import useFormInput from 'core/hooks/use-form-input/use-form-input.hook';
 import useFormRadio from 'core/hooks/use-form-radio/use-form-radio.hook';
-import handleSubmit from 'core/utils/forms/triggers/handle-submit/handle-submit.util';
+import useForm from 'core/hooks/use-form/use-form.hook';
 
 import { UseOrderFormReturn } from './interfaces/use-order-form.interface';
 
 export default function useOrderForm(): UseOrderFormReturn {
+  const { handleSubmit } = useForm();
   const { orderItems } = useOrderContext();
   const { isAuthenticatedUser } = useUserContext();
   const [password, setPassword] = useState<string>('');
