@@ -1,7 +1,11 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
+import vocabulary from 'core/constants/vocabulary.constant';
+import uuid from 'core/utils/generations/uuid';
+
 import { OrderItem } from 'features/order/interfaces/order-item.interface';
 
+import { useToastContext } from '../toast/toast.context';
 import {
   OrderContextData,
   OrderContextReturn,
@@ -65,6 +69,8 @@ export function useOrderContext(): OrderContextReturn {
     orderTotal,
     setOrderTotal,
   } = useContext(OrderContext);
+  const { addToast } = useToastContext({});
+
   const shipping = 5;
 
   function changeItemQuantity(item: OrderItem, quantity: number): void {
@@ -107,6 +113,13 @@ export function useOrderContext(): OrderContextReturn {
       updatedOrderItems = orderItems.filter((orderItem) => {
         return orderItem.id !== itemAlreadyAdded?.id;
       });
+
+      addToast({
+        id: uuid(),
+        title: `${vocabulary.ORDER}`,
+        type: 'info',
+        message: `${itemAlreadyAdded?.name} removido.`,
+      });
     } else {
       changeItemQuantity(item, -1);
       changeItemSubtotal(item);
@@ -117,6 +130,13 @@ export function useOrderContext(): OrderContextReturn {
 
   function clearOrderItems(): void {
     setOrderItems([]);
+
+    addToast({
+      id: uuid(),
+      title: `${vocabulary.ORDER}`,
+      type: 'info',
+      message: 'Todos os itens foram removidos.',
+    });
   }
 
   function calcOrderSubtotal(): void {
