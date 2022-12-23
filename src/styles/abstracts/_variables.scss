@@ -13,8 +13,10 @@ $color-secondary: #f8f9fa;
 $color-base-1: #cecfd0;
 $color-base-2: #fff;
 $color-base-3: #1a1a1a;
-$color-danger: #dc3545;
 $color-success: #198754;
+$color-info: $color-base-3;
+$color-warning: $color-primary;
+$color-danger: #dc3545;
 
 $colors: (
   'primary': $color-primary,
@@ -22,8 +24,10 @@ $colors: (
   'base-1': $color-base-1,
   'base-2': $color-base-2,
   'base-3': $color-base-3,
-  'danger': $color-danger,
   'success': $color-success,
+  'info': $color-info,
+  'warning': $color-warning,
+  'danger': $color-danger,
 );
 
 // -----------------------------------------------------------------------------
@@ -421,6 +425,7 @@ $visibility: (
 // -----------------------------------------------------------------------------
 $z-indexes: (
   'c-spinner',
+  'c-toast',
   'l-header',
 );
 
@@ -432,3 +437,4 @@ $duration-0-2s: 0.2s;
 $duration-0-3s: 0.3s;
 $duration-0-6s: 0.6s;
 $duration-0-9s: 0.9s;
+$duration-4-0s: 4s;
