@@ -1,0 +1,168 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/functions';
+@import 'styles/abstracts/mixins';
+
+// -----------------------------------------------------------------------------
+// c-toast
+// -----------------------------------------------------------------------------
+.c-toast {
+  display: flex;
+  gap: px-to-rem(15px);
+  align-items: flex-start;
+  overflow: hidden;
+  max-width: px-to-rem(340px);
+  padding: px-to-rem(15px);
+  border: px-to-rem(1px) solid $color-base-1;
+  border-radius: px-to-rem(5px);
+  color: $color-base-2;
+  opacity: 0.9;
+  pointer-events: all;
+  transition: $duration-0-3s ease;
+  animation-duration: $duration-4-0s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+
+  @include media-breakpoint('sm') {
+    width: px-to-rem(340px);
+  }
+
+  // c-toast:hover
+  &:hover {
+    opacity: 1;
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-toast__container
+  // ---------------------------------------------------------------------------
+  &__container {
+    position: fixed;
+    z-index: zindex('c-toast');
+    margin: px-to-rem(15px);
+    pointer-events: none;
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-toast__position
+  // ---------------------------------------------------------------------------
+  &__position {
+    // c-toast__position--top-left
+    &--top-left {
+      top: 0;
+      left: 0;
+
+      // c-toast__position--top-left-animation
+      &-animation {
+        animation-name: show-in-right;
+      }
+    }
+
+    // c-toast__position--top-right
+    &--top-right {
+      top: 0;
+      right: 0;
+
+      // c-toast__position--top-right-animation
+      &-animation {
+        animation-name: show-in-left;
+      }
+    }
+
+    // c-toast__position--bottom-left
+    &--bottom-left {
+      bottom: 0;
+      left: 0;
+
+      // c-toast__position--bottom-left-animation
+      &-animation {
+        animation-name: show-in-right;
+      }
+    }
+
+    // c-toast__position--bottom-right
+    &--bottom-right {
+      right: 0;
+      bottom: 0;
+
+      // c-toast__position--bottom-right-animation
+      &-animation {
+        animation-name: show-in-left;
+      }
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-toast__type
+  // ---------------------------------------------------------------------------
+  &__type {
+    // c-toast__type--default
+    &--default {
+      background-color: $color-base-2;
+      color: $color-base-3;
+    }
+
+    // c-toast__type--success
+    &--success {
+      background-color: $color-success;
+    }
+
+    // c-toast__type--danger
+    &--danger {
+      background-color: $color-danger;
+    }
+
+    // c-toast__type--info
+    &--info {
+      background-color: $color-info;
+    }
+
+    // c-toast__type--warning
+    &--warning {
+      background-color: $color-warning;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-toast__notify
+  // ---------------------------------------------------------------------------
+  &__notify {
+    flex: 1;
+    font-size: px-to-rem(15px);
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-toast__title
+  // ---------------------------------------------------------------------------
+  &__title {
+    margin-bottom: px-to-rem(5px);
+    font-weight: bold;
+    font-size: px-to-rem(16px);
+  }
+
+  // ---------------------------------------------------------------------------
+  // c-toast__button
+  // ---------------------------------------------------------------------------
+  &__button {
+    display: flex;
+    margin-top: px-to-rem(-5px);
+    margin-right: px-to-rem(-5px);
+    padding: px-to-rem(5px);
+    color: $color-base-2;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// animations
+// -----------------------------------------------------------------------------
+@keyframes show-in-right {
+  0% { transform: translateX(-110%);}
+  30% { transform: translateX(0);}
+  70% { transform: translateX(0);}
+  100% { transform: translateX(-110%);}
+}
+
+@keyframes show-in-left {
+  0% { transform: translateX(110%);}
+  30% { transform: translateX(0);}
+  70% { transform: translateX(0);}
+  100% { transform: translateX(110%);}
+}
