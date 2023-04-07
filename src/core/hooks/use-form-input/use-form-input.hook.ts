@@ -6,6 +6,7 @@ import stringToBoolean from 'core/utils/conversions/variable-type.util';
 import cepMask from 'core/utils/forms/masks/cep-mask.util';
 import cpfMask from 'core/utils/forms/masks/cpf-mask.util';
 import phoneMask from 'core/utils/forms/masks/phone-mask.util';
+import ufMask from 'core/utils/forms/masks/uf-mask.util';
 import isValidCPF from 'core/utils/forms/validations/cpf-validation.util';
 
 import { GetValidatorParams } from './interfaces/get-validator.interface';
@@ -117,6 +118,9 @@ export default function useFormInput({
         break;
       case 'cep':
         cepMask(event);
+        break;
+      case 'uf':
+        ufMask(event);
         break;
       default:
     }

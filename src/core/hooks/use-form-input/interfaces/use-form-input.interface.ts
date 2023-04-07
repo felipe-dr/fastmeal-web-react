@@ -6,7 +6,7 @@ export interface UseFormInputProps {
   }[];
   fieldName?: string;
   customMessage?: string;
-  mask?: 'cpf' | 'phone' | 'cep';
+  mask?: 'cpf' | 'phone' | 'cep' | 'uf';
 }
 
 export interface UseFormInputReturn {
