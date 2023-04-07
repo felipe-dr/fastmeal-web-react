@@ -82,7 +82,7 @@ export default function RestaurantOrderListComponent(): JSX.Element {
               hoverColor="primary"
               styleClasses="u-display-flex u-flex-align-items-center"
               type="button"
-              onClick={clearOrderItems}
+              onClick={() => clearOrderItems()}
             >
               <RiCloseCircleLine className="u-flex-shrink-0 u-mr-5" />
               Limpar

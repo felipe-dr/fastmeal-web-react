@@ -128,15 +128,17 @@ export function useOrderContext(): OrderContextReturn {
     setOrderItems(updatedOrderItems);
   }
 
-  function clearOrderItems(): void {
+  function clearOrderItems(hasMessage = true): void {
     setOrderItems([]);
 
-    addToast({
-      id: uuid(),
-      title: `${vocabulary.ORDER}`,
-      type: 'info',
-      message: 'Todos os itens foram removidos.',
-    });
+    if (hasMessage) {
+      addToast({
+        id: uuid(),
+        title: `${vocabulary.ORDER}`,
+        type: 'info',
+        message: 'Todos os itens foram removidos.',
+      });
+    }
   }
 
   function calcOrderSubtotal(): void {

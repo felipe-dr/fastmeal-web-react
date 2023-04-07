@@ -38,7 +38,7 @@ export default function useFormRadio({
    * @returns {void}
    */
   function onChange({ target }: ChangeEvent<HTMLInputElement>): void {
-    setSelectedValue(target.value);
+    setSelectedValue(target.id);
   }
 
   useEffect(() => {
