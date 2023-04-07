@@ -21,7 +21,7 @@ export interface OrderContextReturn {
   orderTotal: number;
   addItem: (item: OrderItem) => void;
   removeItem: (item: OrderItem, isRemoveDirectly?: boolean) => void;
-  clearOrderItems: () => void;
+  clearOrderItems: (hasMessage?: boolean) => void;
 }
 
 export interface OrderProviderProps {
